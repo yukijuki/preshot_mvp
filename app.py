@@ -1,20 +1,23 @@
-# from app.tasks import create_image_set
-from flask import Flask, request, redirect, session, send_from_directory, jsonify, render_template, make_response, url_for, abort
+from tasks import create_image
+from flask import Flask, request, redirect, session, send_from_directory, jsonify, render_template, make_response, url_for, abort, flash
 from flask_sqlalchemy import SQLAlchemy
 import datetime, os, secrets
 from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = '/static/img'
+PHISICAL_ROOT = os.path.dirname( os.path.abspath( __file__ ) )
 
 app = Flask(__name__)
 # app.config.from_object("config.DevelopmentConfig")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SECRET_KEY"] = "superSecret"
-app.config["IMAGE_UPLOADS"] = "C:\\Users\\yukij\\Desktop\\Preshot\\static\\img"
+app.config["IMAGE_UPLOADS"] = "C:\\Users\\yukij\\Desktop\\preshot_mvp\\static\\img"
+app.config["UPLOAD_FOLDER"] = PHISICAL_ROOT + UPLOAD_FOLDER
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
 app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 * 1024
 
 app.debug = True
 db = SQLAlchemy(app)
-
 
 # Define Models
 
@@ -38,7 +41,7 @@ class Employee(db.Model):
     lab = db.Column(db.String(80), nullable=False)
     club = db.Column(db.String(80), nullable=False)
     wagamanchi = db.Column(db.String(255), nullable=False)
-    ask_clicks = db.Column(db.Integer, default=0)
+    ask_clicks = db.Column(db.Integer)
 
 class Ask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -74,15 +77,13 @@ def allowed_image_filesize(filesize):
 
 @app.route("/")
 def index():
-    filename = "human.jpeg"
-    return render_template("home.html", image_name = filename)
+    return render_template("register.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         data = request.form
-        print(data)
 
         """
         data = {
@@ -94,7 +95,6 @@ def register():
         print(session['Email'])
 
         student = Student.query.filter_by(email=data["email"]).first()
-        print(student)
 
         if student is None:
 
@@ -105,18 +105,18 @@ def register():
             )
             db.session.add(newuser)
             db.session.commit()
-            print("signed up")
+            flash("登録しました")
             #"account created"
             return redirect(url_for('profile'))
         
         else:
             if student.password == data["password"]:
-                print("logged in")
+                flash("ログインしました")
                 return redirect(url_for('home'))
 
             else:  
                 #"password is wrong"
-                print("password wrong")
+                flash("パスワードが違います")
                 return redirect(request.url)
     return render_template("register.html")
 
@@ -126,8 +126,7 @@ def profile():
     if email is not None:
         print(email)
     else:
-        print("no session data stored")
-        print(email)
+        flash("ログインしなおしてください。")
         return redirect(url_for('register'))
 
     student = Student.query.filter_by(email=email).first()
@@ -138,17 +137,14 @@ def profile():
         print(data)
 
         if data["password"] == "":
-            print("PASSWORD stay the same")
             data["password"] = student.password
             print(data["password"])
 
         if data["name"] == '':
-            print("name stay the same")
             data["name"] = student.name
             print(data["name"])
 
         if data["industry"] == '':
-            print("industry stay the same")
             data["industry"] = student.industry
 
         student.password = data["password"]
@@ -163,50 +159,48 @@ def profile():
 
     return render_template("profile.html", data = student)
 
-# @app.route("/home", methods=["GET"])
-# def home():
+@app.route("/home", methods=["GET"])
+def home():
+    file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
+    try:        
+        """
+        data = {
+            "faculty" = "Str",
+            "firm" = "Str",
+            "industry" = "Str",
+            "position": "Str",
+            "lab" = "Str",
+            "club" = "Str",
+        }
+        """
 
-#     try:        
-#         """
-#         data = {
-#             "faculty" = "Str",
-#             "firm" = "Str",
-#             "industry" = "Str",
-#             "position": "Str",
-#             "lab" = "Str",
-#             "club" = "Str",
-#         }
-#         """
+        employees = Employee.query.all()
 
-#         employees = Employee.query.all()
+        #Sort with function
+        # def sort():
+        #     return employees, common
 
-#         #Sort with function
-#         # def sort():
-#         #     return employees, common
+        response = []
 
-#         response = []
+        for emplyee in employees:
+            employee_data = {}
+            employee_data["name"] = Employee.name
+            employee_data["image"] = url_for('static', filename='img/' + Employee.filename)
+            employee_data["link"] = Employee.link
+            employee_data["faculty"] = Employee.faculty
+            employee_data["firm"] = Employee.firm
+            employee_data["industry"] = Employee.industry
+            employee_data["position"] = Employee.position
+            employee_data["lab"] = Employee.lab
+            employee_data["club"] = Employee.club
+            employee_data["wagamanchi"] = Employee.wagamanchi
+            employee_data["ask_clicks"] = Employee.ask_clicks
+            response.append(employee_data)
 
-#         for emplyee in employees:
-#             employee_data = {}
-#             employee_data["name"] = Employee.name
-#             employee_data["filename"] = Employee.filename
-#             employee_data["link"] = Employee.link
-#             employee_data["faculty"] = Employee.faculty
-#             employee_data["firm"] = Employee.firm
-#             employee_data["industry"] = Employee.industry
-#             employee_data["position"] = Employee.position
-#             employee_data["lab"] = Employee.lab
-#             employee_data["club"] = Employee.club
-#             employee_data["wagamanchi"] = Employee.wagamanchi
-#             employee_data["ask_clicks"] = Employee.ask_clicks
-#             response.append(employee_data)
+    except FileNotFoundError:
+        abort(404)
 
-#         return send_from_directory(app.config["IMAGE_UPLOADS"], filename=filename as_attachment= False)
-
-#     except FileNotFoundError:
-#         abort(404)
-
-#     return render_template("home.html", data = response)
+    return render_template("home.html", files = response)
 
 
 @app.route("/ask_click", methods=["GET","POST"])
@@ -244,27 +238,45 @@ def upload():
 
     if request.method == "POST":
         if request.files:
-            data = request.form
 
             if allowed_image_filesize(request.cookies.get("filesize")) == False:
-                print("file exceeded max size")
+                flash("file exceeded max size", "failed")
                 return redirect(request.url)
-
+            
+            data = request.form
             image = request.files["image"]
+            print(image)
 
             if image.filename == "":
-                print("Image must have a name")
+                flash("Image must have a name")
                 return redirect(request.url)
             
             if not allowed_image(image.filename):
-                print("extension not allowed")
+                flash("extension not allowed")
                 return redirect(request.url)
             else:
                 filename = secure_filename(image.filename)
                 print(filename)
-                image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+                image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
 
-            print("image saved")
+                employee = Employee(
+                name = data["name"],
+                filename = filename,
+                link = data["link"],
+                faculty = data["faculty"],
+                firm = data["firm"],
+                industry = data["industry"],
+                position = data["position"],
+                lab = data["lab"],
+                club = data["club"],
+                wagamanchi = data["wagamanchi"],
+                ask_clicks = 0
+                )
+
+                db.session.add(employee)
+                db.session.commit()
+                flash("Image saved")
+
             return redirect(request.url)
     return render_template("upload.html")
 

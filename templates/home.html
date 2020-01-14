@@ -2,7 +2,14 @@
 {% block content %}
 
 <div class="card">
-  <img src=" {{url_for('static', filename=image_name)}}">
+  {% if files %}
+  <h2>Files llist</h2>
+  {% for file in files %}
+    <p><a href="{{ file.url }}"> {{ file.file_name }} </a></p>
+  {% endfor %}
+  {% else %}
+    <h2>No files</h2>
+  {% endif %}
   <div class="container">
     <h4><b>Yuki Kawano</b></h4>
     <p>Architect & Engineer</p>

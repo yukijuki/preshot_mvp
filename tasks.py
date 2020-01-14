@@ -2,8 +2,7 @@ from PIL import Image
 import os
 import time
 
-def create_image(imagedir, image_name)
-    start = time.time()
+def create_image(imagedir, image_name):
 
     thumb = 30, 30
     small = 540, 540
@@ -42,7 +41,3 @@ def create_image(imagedir, image_name)
     xl_image.thumbnail(thumb, Image.LANCZOS)
     xl_image.save(f"{os.path.join(image_dir, image_name)}-1200.{image_ext}", optimize=True, quality=95)
 
-    end = time.time()
-
-    time_elapsed = end - start
-    print(time_elapsed)
