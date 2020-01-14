@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="card">
+  <img src=" {{url_for('static', filename=image_name)}}">
+  <div class="container">
+    <h4><b>Yuki Kawano</b></h4>
+    <p>Architect & Engineer</p>
+  </div>
+</div>
+
+{% endblock content %}

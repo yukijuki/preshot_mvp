@@ -1,0 +1,38 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-wdith, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <!-- title-->
+    <title>Unknown Page</title>
+
+</head>
+
+<body>
+    <h1>Preshot</h1>
+    <a href="/">Index</a>
+    <a href="/register">登録＆ログイン</a>
+    <a href="/profile">Profile</a>
+    <a href="/home">Home</a>
+
+
+    <div class="container">
+    <h1>Sign up<h1>
+
+    <form action="/register" method="post" novalidate>
+
+        <label>Email</label>
+        <input class="form-control" type="email" name="email" required>
+
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" required>
+
+        <button type="submit">Sign up</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src = "{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

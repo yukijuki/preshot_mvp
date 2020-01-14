@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class ="container">
+    <h1>Upload Images</h1>
+    <hr>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+
+            <label> name </label>
+            <input type="text" id="name" placeholder = "Enter your name">
+
+            <hr>
+            <label>image</label>
+            <input oninput="filesize(this);" type="file" class="custome-file-input" name="image" id="image">
+            <label for="image">Select Image ...</label>  
+            
+            <hr>
+            <label> link </label>
+            <input type="text" id="link" placeholder = "Enter your link">
+            
+            <hr>
+            <label> faculty </label>
+            <input type="text" id="faculty" placeholder = "Enter your faculty">
+            
+            <hr>
+            <label> firm </label>
+            <input type="text" id="firm" placeholder = "Enter your firm">
+            
+            <hr>
+            <label> industry </label>
+            <input type="text" id="industry" placeholder = "Enter your indsutry">
+            
+            <hr>
+            <label> position </label>
+            <input type="text" id="position" placeholder = "Enter your position">
+            
+            <hr>
+            <label> lab </label>
+            <input type="text" id="lab" placeholder = "Enter your lab">
+            
+            <hr>
+            <label> club </label>
+            <input type="text" id="club" placeholder = "Enter your club">
+            
+            <hr>
+            <label> wagamanchi </label>
+            <input type="text" id="faculty" placeholder = "Enter your wagamanchi">
+
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Data Commit</button>
+
+    </form>
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+    function filesize(elem) {
+
+        document.cookie = `filesize=${elem.files[0].size}`;
+
+    }
+</script>
+{% endblock %}

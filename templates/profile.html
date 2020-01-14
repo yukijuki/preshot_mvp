@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <label> Email </label>
+    <p class="form-control" type="email" id="email">{{ data["email"] }}</p>
+
+    <label> password </label>
+    <p>current -  {{ data["password"] }} </p>
+    <input class="form-control" type="password" id="password" placeholder = "Enter your password">
+    <br>
+    <label> name </label>
+    <p>current -  {{ data["name"] }} </p>
+    <input class="form-control" type="text" id="name" placeholder = "Enter your name">
+    <br>
+    <label> industry </label>
+    <p>current -  {{ data["industry"] }} </p>
+    <input class="form-control" type="text" id="industry" placeholder = "業界を選んでね">
+
+    <button type="submit" onclick="submit_entry();">Save</button>
+
+
+{% endblock content %}
+{% block script %}
+<script>
+    function submit_entry() {
+        
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var name = document.getElementById("name");
+        var industry = document.getElementById("industry");
+
+        var entry = {
+            email: email.value,
+            password: password.value,
+            name: name.value,
+            industry: industry.value
+        }
+        console.log(entry)
+
+        fetch(`${window.origin}/profile`, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        }) 
+        .then(function (response) {
+
+            if (response.status != 200) {
+                console.log(`response status was not 200: ${response.status}`);
+                return ;
+            }
+
+            response.json().then(function (data) {
+                location.reload();
+                console.log(data)
+            })
+        })
+    }
+</script>
+{% endblock %}
