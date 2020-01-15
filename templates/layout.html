@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-wdith, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css?20140527') }}">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    {% block css %}{% endblock %}
     <!-- title-->
     <title>Unknown Page</title>
 </head>
 
 <body>
-    <h1>Preshot</h1>
-    <a href="/">登録＆ログイン</a>
-    <a href="/upload">画像アップロード</a>
-    <a href="/profile">プロフィール</a>
-    <a href="/home">ホーム</a>
+    <header>
+        <ul class="tab-nav">
+            <li class="tab left is-active">
+                <a href="/" class="fas fa-users"></a>
+            </li>
+            <li class="tab right">
+                <a href="/profile" class="fas fa-cogs"></a>
+            </li>
+        </ul>
 
+    </header>
 
     <div class="container">
         {% for message in get_flashed_messages() %}

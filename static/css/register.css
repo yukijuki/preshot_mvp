@@ -1,10 +1,14 @@
+html {
+    width: 100vw;
+    height: 100vh;
+}
 body {
     margin: 0;
+    height: 100%;
     font-family: "System Bold 19.0";
 }
-
 ul {
-    list-style: none;
+    list-style: None;
 }
 
 .login {
@@ -59,6 +63,7 @@ ul {
     border-left: none;
     border-right: none;
     border-bottom: solid 1px #FF8F00;
+    background-color: white;
 }
 
 #email,

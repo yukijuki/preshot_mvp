@@ -1,13 +1,31 @@
 {% extends "layout.html" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
 {% block content %}
-    <form action="/register" method="post" novalidate>
+<div class="login">
 
-        <label>Email</label>
-        <input class="form-control" type="email" name="email" required>
+    <div class="login_top">
+        <div class = "logo">
+        <img src="{{ url_for('static', filename='preshot_img/preshot_logo01.jpg') }}" alt="preshot_logo">
+        </div>
+    </div>
 
-        <label>Password</label>
-        <input class="form-control" type="password" name="password" required>
+        <form class="login_bottom" action="/register" method="post" novalidate>
+            <div class="form">
 
-        <button type="submit">Sign up</button>
-    </form>
+                <ul class="container">
+                    <li><input type="email" id="email" name="email" placeholder="yukijukisfc@gmail.com" required></li>
+                    <li><input type="password" id="password" name="password" placeholder="4545" required></li>
+                </ul>
+
+                <div class="container">
+                    <button class="btn2" type="submit">新規登録/ログイン</button>
+                </div>
+            </div>
+        </form>
+
+</div>
 {% endblock content %}

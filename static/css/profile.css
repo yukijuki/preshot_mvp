@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+html{
+    height: 100%;
+}
+
 body {
     margin: 0;
     height: 100%;
@@ -28,8 +32,6 @@ header {
 }
 
 
-/*タブ（切り替え含む）*/
-
 .tab {
     color: white;
     height: 50px;
@@ -52,19 +54,6 @@ header {
     display: inline;
 }
 
-.tab.is-active {
-    opacity: 0.8;
-    transition: all 0.2s ease-out;
-}
-
-.panel {
-    display: none;
-}
-
-.panel.is-show {
-    display: block;
-}
-
 .left {
     float: left;
     width: 50%;
@@ -79,16 +68,20 @@ header {
     line-height: 50px;
 }
 
-.panel {
+.fas {
+    color: white;
+}
+
+.container{
     width: 100vw;
     height: 100vh;
 }
 
 
-/*home画面*/
-
-
-/*profile画面*/
+.profile {
+    width: 100vw;
+    height: 100vh;
+}
 
 .profile-area {
     width: 100%;
@@ -119,27 +112,27 @@ header {
 }
 
 .btn {
-    box-shadow: 0 3px black;
+    margin: 25px 30px 0 30px;
     color: white;
-    border-radius: 10px;
-    margin: 25px 50px 0 50px;
-    height: 20px;
+    border-radius: 20px;
+    height: 25px;
     font-size: 10px;
+    width: 130px;
+    box-shadow: 1px 1px 1px 1px #c0c0c0;
 }
 
 .btn:active {
     box-shadow: none;
     position: relative;
-    top: 3px;
+    top: 2px;
 }
 
 .save {
-    height: 20px;
     background-color: #FF8F00;
 }
 
 .contact {
-    background-color: #057bfa;
+    background-color: #00bfff;
 }
 
 .message-area {
@@ -170,6 +163,3 @@ header {
     line-height: normal;
 }
 
-.contact-form {
-    margin: 0 30px;
-}
