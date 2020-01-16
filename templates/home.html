@@ -6,29 +6,24 @@
 
 {% block content %}
 
-<div class="container">
-  {% if files %}
-    <br>
-    <br>
-    <h2>あなたにおすすめの内定者リスト</h2>
-<ul class="horizontal_scroll">
-  {% for file in files %}
-    <li>
-      <a class="size" href={{file.link}}><img src={{file.filename}}></a>
-      <p>名前 - {{ file.name }}</p>
-      <p>学部 - {{ file.faculty }}</p> 
-      <p>会社 - {{ file.firm }}</p> 
-      <p>業界 - {{ file.industry }}</p> 
-      <p>研究会 - {{ file.lab }}</p> 
-      <p>サークル - {{ file.club }}</p> 
-      <p>わがまんち - {{ file.wagamanchi }}</p> 
-      <p>訪問数 - {{ file.ask_clicks }}</p> 
-    </li>
-  {% endfor %}
-</ul>
-  {% else %}
-    <h2>No files</h2>
-  {% endif %}
-</div>
+<!-- Contact Card ~ #01 -->
+{% if files %}
+{% for file in files %}
+  <div class="card">
+    <div class="banner">
+        <img class="avatar" src={{file.filename}}>
+    </div>
+    <h3>{{ file.name }}</h3>
+    <p>業界 -{{ file.industry }}</p>
+    <p>会社 - {{ file.firm }}</p> 
+    <ul>
+      <a href={{file.link}} target="_blank"><i class="fab fa-facebook-messenger" style="font-size:18px; color:#0078FF;"></i>       もっと見る</a>
+    </ul>
+  </div>
+{% endfor %}
+{% else %}
+  <h2>No files</h2>
+{% endif %} 
+
 
 {% endblock content %}

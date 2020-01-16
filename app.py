@@ -11,9 +11,8 @@ app = Flask(__name__)
 # app.config.from_object("config.DevelopmentConfig")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SECRET_KEY"] = "superSecret"
-app.config["IMAGE_UPLOADS"] = "C:\\Users\\yukij\\Desktop\\preshot_mvp\\static\\img"
 app.config["UPLOAD_FOLDER"] = PHISICAL_ROOT + UPLOAD_FOLDER
-app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
+app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG"]
 app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 * 1024
 
 app.debug = True
