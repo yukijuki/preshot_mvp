@@ -84,6 +84,10 @@ def index():
 def register():
     if request.method == "POST":
         data = request.form
+        if data["email"] == "":
+            flash("メールアドレスを入力してください。")
+            print("email absent")
+            return redirect(url_for('register'))
 
         """
         data = {
@@ -182,19 +186,19 @@ def home():
 
         response = []
 
-        for emplyee in employees:
+        for employee in employees:
             employee_data = {}
-            employee_data["name"] = Employee.name
-            employee_data["image"] = url_for('static', filename='img/' + Employee.filename)
-            employee_data["link"] = Employee.link
-            employee_data["faculty"] = Employee.faculty
-            employee_data["firm"] = Employee.firm
-            employee_data["industry"] = Employee.industry
-            employee_data["position"] = Employee.position
-            employee_data["lab"] = Employee.lab
-            employee_data["club"] = Employee.club
-            employee_data["wagamanchi"] = Employee.wagamanchi
-            employee_data["ask_clicks"] = Employee.ask_clicks
+            employee_data["name"] = employee.name
+            employee_data["filename"] = 'static/img/' + employee.filename
+            employee_data["link"] = employee.link
+            employee_data["faculty"] = employee.faculty
+            employee_data["firm"] = employee.firm
+            employee_data["industry"] = employee.industry
+            employee_data["position"] = employee.position
+            employee_data["lab"] = employee.lab
+            employee_data["club"] = employee.club
+            employee_data["wagamanchi"] = employee.wagamanchi
+            employee_data["ask_clicks"] = employee.ask_clicks
             response.append(employee_data)
 
     except FileNotFoundError:
@@ -279,6 +283,12 @@ def upload():
 
             return redirect(request.url)
     return render_template("upload.html")
+
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('register'))
 
 
 if __name__ == "__main__":

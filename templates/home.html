@@ -1,19 +1,34 @@
 {% extends "layout.html" %}
+
+{% block css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
 {% block content %}
 
-<div class="card">
+<div class="container">
   {% if files %}
-  <h2>Files llist</h2>
+    <br>
+    <br>
+    <h2>あなたにおすすめの内定者リスト</h2>
+<ul class="horizontal_scroll">
   {% for file in files %}
-    <p><a href="{{ file.url }}"> {{ file.file_name }} </a></p>
+    <li>
+      <a class="size" href={{file.link}}><img src={{file.filename}}></a>
+      <p>名前 - {{ file.name }}</p>
+      <p>学部 - {{ file.faculty }}</p> 
+      <p>会社 - {{ file.firm }}</p> 
+      <p>業界 - {{ file.industry }}</p> 
+      <p>研究会 - {{ file.lab }}</p> 
+      <p>サークル - {{ file.club }}</p> 
+      <p>わがまんち - {{ file.wagamanchi }}</p> 
+      <p>訪問数 - {{ file.ask_clicks }}</p> 
+    </li>
   {% endfor %}
+</ul>
   {% else %}
     <h2>No files</h2>
   {% endif %}
-  <div class="container">
-    <h4><b>Yuki Kawano</b></h4>
-    <p>Architect & Engineer</p>
-  </div>
 </div>
 
 {% endblock content %}

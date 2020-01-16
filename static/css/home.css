@@ -1,0 +1,52 @@
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+
+img.size {
+  width: 96px;
+  height: 65px;
+  }
+
+
+.horizontal_scroll {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 0 12px 8px;
+  display: -ms-flexbox;
+  display: flex; }
+
+/* 画面幅が768px以上の場合、横スクロールを解除 */
+@media screen and (min-width: 768px) {
+  .horizontal_scroll {
+    overflow-x: inherit;
+    padding: 0 8px 6px; } }
+
+.horizontal_scroll > li {
+  width: 100%;
+  min-width: 140px; }
+
+@media screen and (min-width: 768px) {
+  .horizontal_scroll > li {
+    min-width: inherit; } }
+
+.horizontal_scroll > li:not(:last-child) {
+  margin-right: 5px; }
+
+.horizontal_scroll > li:last-child {
+  padding-right: 5px; }
+
+@media screen and (min-width: 768px) {
+  .horizontal_scroll > li:last-child {
+    padding-right: 0; } }
+
+.horizontal_scroll img {
+  vertical-align: bottom; }
