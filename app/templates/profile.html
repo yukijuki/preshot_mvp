@@ -1,7 +1,10 @@
 {% extends "layout.html" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
 {% block content %}
-
-
     <div class="profile">
             <!-- profile画面 -->
             <div class="profile-area">
@@ -19,10 +22,21 @@
                         <br><input placeholder="Your Name" type="text" id="name">
                     </p>
 
-                    <p class="status">現在の業界 - {{ data["industry"] }} 
-                        <br><input placeholder="業界を選択" type="text" id="industry">
-                    </p>
-
+                    <div class="status btn-select">現在の業界 - {{ data["industry"] }} 
+                        <p class="label">業界を選択してください</p>
+                        <select class="select" id="industry" name="業界" size="1">
+                                <option value="業界を選択してください" selected>業界を選択してください</option>
+                                <option value="商社">商社</option>
+                                <option value="メーカー">メーカー</option>
+                                <option value="小売">小売</option>
+                                <option value="金融">金融</option>
+                                <option value="サービス">サービス</option>
+                                <option value="マスコミ">マスコミ</option>
+                                <option value="IT・通信">IT・通信</option>
+                                <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+                                <option value="その他">その他</option>
+                        </select>
+                    </div>
                     <button class="btn save"　type="submit" onclick="submit_entry();">Save</button>
                 </div>
             </div>
@@ -80,5 +94,14 @@
             })
         })
     }
+</script>
+<script>
+    $('.select').on('change', function() {
+        var $this = $(this)
+        var $option = $this.find('option:selected');
+        $('.label').text($option.text());
+        // onchange後にフォーカスしてるのが嫌な場合
+        $this.blur();
+    });
 </script>
 {% endblock %}

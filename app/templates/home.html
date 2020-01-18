@@ -6,24 +6,33 @@
 
 {% block content %}
 
-<!-- Contact Card ~ #01 -->
-{% if files %}
-{% for file in files %}
-  <div class="card">
-    <div class="banner">
-        <img class="avatar" src={{file.filename}}>
+<div class="card-list">
+    
+  <!-- Contact Card ~ #01 -->
+  {% if files %}
+  {% for file in files %}
+    <div class="no-card">
     </div>
-    <h3>{{ file.name }}</h3>
-    <p>業界 -{{ file.industry }}</p>
-    <p>会社 - {{ file.firm }}</p> 
-    <ul>
-      <a href={{file.link}} target="_blank"><i class="fab fa-facebook-messenger" style="font-size:18px; color:#0078FF;"></i>       もっと見る</a>
-    </ul>
-  </div>
-{% endfor %}
-{% else %}
-  <h2>No files</h2>
-{% endif %} 
+    <div class="card">
+      <div class="banner">
+          <img class="avatar" src={{file.filename}}>
+      </div>
+      <h3>{{ file.name }}</h3>
+      <p>業界 -{{ file.industry }}</p>
+      <p>会社 - {{ file.firm }}</p> 
+      <ul>
+        <a href={{file.link}} target="_blank"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
+      </ul>
+    </div>
+    <div class="no-card">
+    </div>
+ 
+  {% endfor %}
+  {% else %}
+    <h2>No files</h2>
+  {% endif %} 
+  
+</div>
 
 
 {% endblock content %}
