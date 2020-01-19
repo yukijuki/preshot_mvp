@@ -29,7 +29,7 @@ class Student(db.Model):
 
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False, unique=True)
+    name = db.Column(db.String(80), nullable=False)
     filename = db.Column(db.String(255), nullable=False, unique=True, default="default.jpg")
     link = db.Column(db.String(255), nullable=False)
     faculty = db.Column(db.String(80), nullable=False)
@@ -194,13 +194,8 @@ def home():
             employee_data["name"] = employee.name
             employee_data["filename"] = 'static/img/' + employee.filename
             employee_data["link"] = employee.link
-            employee_data["faculty"] = employee.faculty
             employee_data["firm"] = employee.firm
             employee_data["industry"] = employee.industry
-            employee_data["position"] = employee.position
-            employee_data["lab"] = employee.lab
-            employee_data["club"] = employee.club
-            employee_data["wagamanchi"] = employee.wagamanchi
             employee_data["ask_clicks"] = employee.ask_clicks
             response.append(employee_data)
 
@@ -209,6 +204,50 @@ def home():
 
     return render_template("home.html", files = response)
 
+@app.route("/employee", methods=["GET"])
+def employee():
+    email = session.get('Email')
+    if email is not None:
+        print(email)
+    else:
+        flash("ログインしなおしてください。")
+        return redirect(url_for('register'))
+
+    file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
+    data = request.get_json()
+    
+    if data is not None:        
+        """
+        data = {
+            "link" = "Str",
+        }
+        """
+
+        employee = Employee.query.filter_by(link=data["link"]).first()
+
+        #Sort with function
+        # def sort():
+        #     return employees, common
+
+        response = []
+
+        employee_data = {}
+        employee_data["name"] = employee.name
+        employee_data["filename"] = 'static/img/' + employee.filename
+        employee_data["link"] = employee.link
+        employee_data["faculty"] = employee.faculty
+        employee_data["firm"] = employee.firm
+        employee_data["industry"] = employee.industry
+        employee_data["position"] = employee.position
+        employee_data["lab"] = employee.lab
+        employee_data["club"] = employee.club
+        employee_data["wagamanchi"] = employee.wagamanchi
+        employee_data["ask_clicks"] = employee.ask_clicks
+        response.append(employee_data)
+
+    else:
+        flash("内定者が存在しません")
+    return render_template("employee.html", file = response)
 
 @app.route("/ask_click", methods=["GET","POST"])
 def ask_click():

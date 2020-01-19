@@ -82,29 +82,9 @@ header {
     line-height: 50px;
 }
 
-.icon-box {
-    text-align: center;
-}
 
-.left1 {
-    float: left;
-    width: 50%;
-}
 
-.left2 {
-    float: right;
-    width: 50%;
-}
 
-.right1 {
-    float: left;
-    width: 50%;
-}
-
-.right2 {
-    float: right;
-    width: 50%;
-}
 
 .fas {
     color: white;

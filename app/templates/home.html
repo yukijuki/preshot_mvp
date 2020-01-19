@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="card-list">
     
   <!-- Contact Card ~ #01 -->
@@ -19,6 +18,7 @@
     </div>
     <div class="card">
       <div class="banner">
+          <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
           <img class="avatar" src={{file.filename}}>
       </div>
       <h3>{{ file.name }}</h3>
@@ -37,6 +37,39 @@
   {% endif %} 
   
 </div>
-
-
 {% endblock content %}
+
+{% block script %}
+<script>
+    function submit_entry() {
+        
+        var link = document.getElementById("link");
+
+        var entry = {
+            link: link.value
+        }
+        console.log(entry)
+
+        fetch(`${window.origin}/employee`, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        }) 
+        .then(function (response) {
+
+            if (response.status != 200) {
+                console.log(`response status was not 200: ${response.status}`);
+                return ;
+            }
+
+            response.json().then(function (data) {
+                console.log(data)
+            })
+        })
+    }
+</script>
+{% endblock %}

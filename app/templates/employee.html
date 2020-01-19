@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/employee.css') }}">
+{% endblock %}
+
+{% block title %}
+  <title>Preshot/Employee</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="card-list">
+    
+  <!-- Contact Card ~ #01 -->
+  {% if file %}
+    <div class="no-card">
+    </div>
+    <div class="card">
+      <div class="banner">
+          <img src={{file.filename}}>
+      </div>
+      <h3>{{ file.name }}</h3>
+      <p>業界 -{{ file.industry }}</p>
+      <p>会社 - {{ file.firm }}</p> 
+      <ul>
+        <a href={{file.link}} target="_blank"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
+      </ul>
+    </div>
+    <div class="no-card">
+    </div>
+  {% else %}
+    <h2>Error 403</h2>
+  {% endif %} 
+  
+</div>
+
+
+{% endblock content %}
