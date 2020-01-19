@@ -1,59 +1,94 @@
-{% extends "layout.html" %}
-{% block content %}
-<div class ="container">
-    <h1>Upload Images</h1>
-    <hr>
+{% extends "layout.html" %} 
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}"> 
+{% endblock %}
+
+{% block title %}
+  <title>Preshot/Upload</title>
+{% endblock %}
+
+{% block content %}
+<div class="upload">
     <form action="/upload" method="POST" enctype="multipart/form-data">
 
-        <div class="form-group">
+        <div class="upload-area">
+            <div class="upload-container">
 
-            <label> name </label>
-            <input type="text" id="name" name="name" placeholder = "Enter your name">
+                <div class="status">
+                    <p>image</p>
+                    <div class="image-upload">choose
+                        <input oninput="filesize(this);" type="file" class="custome-file-input" id="image" onchange="uv.style.display='inline-block'; uv.value=this.value;" />
+                        <input type="text" id="uv" class="uploadValue" disabled />
+                    </div>
+                </div>
 
-            <hr>
-            <label>image</label>
-            <input oninput="filesize(this);" type="file" class="custome-file-input" name="image" id="image">
-            
-            <hr>
-            <label> link </label>
-            <input type="text" id="link" name="link" placeholder = "Enter your link">
+                <p class="status">name
+                    <br> <input placeholder="your name" id="name" type="text">
+                </p>
 
-            <hr>
-            <label> faculty </label>
-            <input type="text" id="faculty" name="faculty" placeholder = "Enter your faculty">            
+                <p class="status">link
+                    <br><input placeholder="Enter your link" type="text" id="link">
+                </p>
 
-            <hr>
-            <label> firm </label>
-            <input type="text" id="firm" name="firm" placeholder = "Enter your firm">
-            
-            <hr>
-            <label> industry </label>
-            <input type="text" id="industry" name="industry" placeholder = "Enter your indsutry">
-            
-            <hr>
-            <label> position </label>
-            <input type="text" id="position" name="position" placeholder = "Enter your position">
-            
-            <hr>
-            <label> lab </label>
-            <input type="text" id="lab" name="lab" placeholder = "Enter your lab">
-            
-            <hr>
-            <label> club </label>
-            <input type="text" id="club" name="club" placeholder = "Enter your club">
-            
-            <hr>
-            <label> wagamanchi </label>
-            <input type="text" id="wagamanchi" name="wagamanchi" placeholder = "Enter your wagamanchi" >
+                <p class="status">faculty
+                    <br><input placeholder="Enter your faculty" type="faculty" id="faculty">
+                </p>
 
+                <p class="status">firm
+                    <br><input placeholder="Enter your firm" type="firm" id="firm">
+                </p>
+
+                <div class="status btn-select">industry
+                    <p class="label">業界を選択してください</p>
+                    <select class="select" id="industry" name="industry" size="1">
+                        <option value="業界を選択してください" selected>業界を選択してください</option>
+                        <option value="商社">商社</option>
+                        <option value="メーカー">メーカー</option>
+                        <option value="小売">小売</option>
+                        <option value="金融">金融</option>
+                        <option value="サービス">サービス</option>
+                        <option value="マスコミ">マスコミ</option>
+                        <option value="IT・通信">IT・通信</option>
+                        <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+
+                <p class="status">potsition
+                    <br><input placeholder="Enter your potsition" type="potsition" id="potsition">
+                </p>
+
+                <p class="status">lab
+                    <br><input placeholder="Enter your lab" type="lab" id="lab">
+                </p>
+
+                <p class="status">club
+                    <br><input placeholder="Enter your club" type="club" id="club">
+                </p>
+
+                <p class="status">wagamanchi
+                    <br><input placeholder="Enter your wagamanchi" type="wagamanchi" id="wagamanchi">
+                </p>
+
+                <button class="btn submit" 　type="submit">Data Commit</button>
+            </div>
         </div>
-        <hr>
-        <button type="submit" class="btn btn-primary">Data Commit</button>
-
     </form>
+
+
+    <div class="message-area">
+        <div class="message-container">
+            <div class="message">
+                <p>お問い合わせ/アカウントの削除などはこちら
+                    <a href="mailto:preshot.info@gmail.com">preshot.info@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-{% endblock content %}
+{% endblock content %} 
+
 {% block script %}
 <script>
     function filesize(elem) {
@@ -61,5 +96,14 @@
         document.cookie = `filesize=${elem.files[0].size}`;
 
     }
+</script>
+<script>
+    $('.select').on('change', function() {
+        var $this = $(this)
+        var $option = $this.find('option:selected');
+        $('.label').text($option.text());
+        // onchange後にフォーカスしてるのが嫌な場合
+        $this.blur();
+    });
 </script>
 {% endblock %}

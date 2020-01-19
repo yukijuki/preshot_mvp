@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
 {% endblock %}
 
+{% block title %}
+  <title>Preshot/Profile</title>
+{% endblock %}
+
 {% block content %}
     <div class="profile">
             <!-- profile画面 -->
@@ -11,7 +15,8 @@
                 <div class="profile-container">
 
                     <p class="status">現在のメールアドレス - {{ data["email"] }}
-                        <br> <input placeholder="your_email@address.com" id="email" type="email">
+                        <!-- <br> <input placeholder="your_email@address.com" id="email" type="email">
+                        needs to be get rid of-->
                     </p>
 
                     <p class="status">現在のパスワード - {{ data["password"] }} 
@@ -59,13 +64,11 @@
 <script>
     function submit_entry() {
         
-        var email = document.getElementById("email");
         var password = document.getElementById("password");
         var name = document.getElementById("name");
         var industry = document.getElementById("industry");
 
         var entry = {
-            email: email.value,
             password: password.value,
             name: name.value,
             industry: industry.value

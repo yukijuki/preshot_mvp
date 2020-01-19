@@ -9,10 +9,10 @@
     <title>Preshot : 新しい面接対策</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="{{ url_for('static', filename='css/introduction/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/icon" href="{{ url_for('static', filename='preshot_img/preshotlogo.png') }}">
 
     <!-- Font Awesome -->
-  
+
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/introduction/bootstrap.min.css') }}">
@@ -40,19 +40,22 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-    .fa-instagram{
-        background: linear-gradient(45deg, rgba(254,212,117,1) 0%,rgba(229,61,93,1) 50%,rgba(194,49,134,1) 70%,rgba(156,56,187,1) 100%);
-        border-radius: 3px;
-    }
-    .fa-twitter{
-        color:blue　;
-    }
-    .fa-facebook{
-        color:#3C5A99 ;
-    }
-    .fa-youtube-square{
-        color:#DA1725;
-    }
+        .fa-instagram {
+            background: linear-gradient(45deg, rgba(254, 212, 117, 1) 0%, rgba(229, 61, 93, 1) 50%, rgba(194, 49, 134, 1) 70%, rgba(156, 56, 187, 1) 100%);
+            border-radius: 15px;
+        }
+        
+        .fa-twitter {
+            color: #00acee;
+        }
+        
+        .fa-facebook {
+            color: #3C5A99;
+        }
+        
+        .fa-youtube-square {
+            color: #DA1725;
+        }
     </style>
 </head>
 
@@ -69,7 +72,7 @@
                     <!-- Start Logo -->
                     <div class="mu-logo-area">
                         <!-- text based logo -->
-                        <a class="mu-logo" href="#">Preshot</a>
+                        <a class="mu-logo" href="/register">Preshot</a>
                     </div>
                     <!-- End Logo -->
 
@@ -79,12 +82,12 @@
                         <div class="mu-header-featured-content">
                             <h1>ようこそ<span>Preshotへ</span></h1>
                             <br>
-                            <p>就活生と内定者を繋ぐ新しいサービス"Preshot"です。「面接対策の情報を得る手段がない」という就活生の悩みを解決するために誕生しました。</p>
+                            <p>就活生と内定者を繋ぐ新しいサービス"Preshot"です。「面接対策の情報が欲しい！！」という就活生の悩みを解決するために生まれました。</p>
                             <br>
 
                             <div class="mu-app-download-area">
                                 <h4>アプリはこちら</h4>
-                                <a class="mu-apple-btn" href="/home"><i class="fas fa-user-graduate"></i><span>就活生はこちら</span></a>
+                                <a class="mu-apple-btn" href="/register"><i class="fas fa-user-graduate"></i><span>就活生はこちら</span></a>
                                 <a class="mu-google-btn" href="/upload"><i class="fas fa-address-card"></i><span>内定者はこちら</span></a>
                                 <!-- <a class="mu-windows-btn" href="#"><i class="fa fa-windows"></i><span>windows store</span></a> -->
                             </div>
@@ -126,17 +129,17 @@
                                         <div class="mu-contact-right">
 
                                             <div class="mu-contact-right-single">
-                                                <div class="mu-icon"><i class="fa fa-envelope"></i></div>
+                                                <span class="mu-icon"><i class="fa fa-envelope"></i></span>
                                                 <p><strong>Email Address</strong></p>
                                                 <a href="mailto:preshot.info@gmail.com">preshot.info@gmail.com</a>
                                             </div>
 
                                             <div class="mu-contact-right-single">
                                                 <div class="mu-social-media">
-                                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                    <a href="#"><i class="fab fa-youtube-square"></i></a>
+                                                    <a href="https://www.facebook.com/Preshot-104522834386553/"><i class="fab fa-facebook"></i></a>
+                                                    <a href="https://twitter.com/preshotofficial"><i class="fab fa-twitter"></i></a>
+                                                    <a href="https://www.instagram.com/preshot_official/"><i class="fab fa-instagram"></i></a>
+                                                    <!--<a href="#"><i class="fab fa-youtube-square"></i></a>-->
                                                 </div>
                                             </div>
 
@@ -182,30 +185,30 @@
      End main content -->
 
 
-    <!-- Start footer -->
-    <footer id="mu-footer" role="contentinfo">
-        <div class="container">
-            <div class="mu-footer-area">
-                <p class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All right reserved.</p>
+        <!-- Start footer -->
+        <footer id="mu-footer" role="contentinfo">
+            <div class="container">
+                <div class="mu-footer-area">
+                    <p class="mu-copy-right">&copy; Copyright <a rel="nofollow" href="http://markups.io">markups.io</a>. All right reserved.</p>
+                </div>
             </div>
-        </div>
 
-    </footer>
-    <!-- End footer -->
-
+        </footer>
+        <!-- End footer -->
 
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Bootstrap -->
-    <script src = "{{ url_for('static', filename='js/introduction/bootstrap.min.js') }}"></script>
-    <!-- Slick slider -->
-    <script type="text/javascript" src = "{{ url_for('static', filename='js/introduction/slick.min.js') }}"></script>
-    <!-- Ajax contact form  -->
-    <script type="text/javascript" src = "{{ url_for('static', filename='js/introduction/app.js') }}"></script>
-    <!-- Custom js -->
-    <script type="text/javascript"　src = "{{ url_for('static', filename='js/introduction/custom.js') }}"></script>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!-- Bootstrap -->
+        <script src="{{ url_for('static', filename='js/introduction/bootstrap.min.js') }}"></script>
+        <!-- Slick slider -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/introduction/slick.min.js') }}"></script>
+        <!-- Ajax contact form  -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/introduction/app.js') }}"></script>
+        <!-- Custom js -->
+        <script type="text/javascript" 　src="{{ url_for('static', filename='js/introduction/custom.js') }}"></script>
 
 </body>
 
