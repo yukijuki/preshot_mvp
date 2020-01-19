@@ -1,6 +1,12 @@
+html,
+body {
+    overflow: hidden;
+}
+
 .profile {
     width: 100vw;
     height: 100vh;
+    margin-top: 50px;
 }
 
 .profile-area {
@@ -83,6 +89,7 @@
     line-height: normal;
 }
 
+
 /*list用のCSSここから*/
 
 .btn-select {
@@ -135,8 +142,5 @@
     display: none;
 }
 
-.alert{
-    margin-top:50px;
-}
-/*ここまで*/
 
+/*ここまで*/

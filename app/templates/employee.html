@@ -12,11 +12,10 @@
 <div class="card-list">
     
   <!-- Contact Card ~ #01 -->
-  {% if files %}
-  {% for file in files %}
+  {% if file %}
     <div class="no-card">
     </div>
-    <div class="card" id={{file.id}} onclick="getId(this.id);">
+    <div class="card" id={{file.id}}>
       <div class="banner">
           <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
           <img class="avatar" src={{file.filename}}>
@@ -30,29 +29,9 @@
     </div>
     <div class="no-card">
     </div>
- 
-  {% endfor %}
-  {% else %}
+   {% else %}
     <h2>No files</h2>
   {% endif %} 
   
 </div>
 {% endblock content %}
-
-{% block script %}
-<script>
-    function getId(id) {
-      
-        var entry = {
-            id: id
-        }
-        console.log(entry)
-
-        fetch(`${window.origin}/employee/${id}`, {
-            method: "GET",
-            credentials: "include",
-            cache: "no-cache"
-        }) 
-    }
-</script>
-{% endblock %}

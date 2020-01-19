@@ -12,7 +12,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SECRET_KEY"] = "superSecret"
 app.config["UPLOAD_FOLDER"] = PHISICAL_ROOT + UPLOAD_FOLDER
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG"]
-app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 * 1024
+app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 3000 * 3000
 
 app.debug = True
 db = SQLAlchemy(app)
@@ -29,7 +29,7 @@ class Student(db.Model):
 
 class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False, unique=True)
+    name = db.Column(db.String(80), nullable=False)
     filename = db.Column(db.String(255), nullable=False, unique=True, default="default.jpg")
     link = db.Column(db.String(255), nullable=False)
     faculty = db.Column(db.String(80), nullable=False)
@@ -191,16 +191,12 @@ def home():
 
         for employee in employees:
             employee_data = {}
+            employee_data["id"] = employee.id
             employee_data["name"] = employee.name
             employee_data["filename"] = 'static/img/' + employee.filename
             employee_data["link"] = employee.link
-            employee_data["faculty"] = employee.faculty
             employee_data["firm"] = employee.firm
             employee_data["industry"] = employee.industry
-            employee_data["position"] = employee.position
-            employee_data["lab"] = employee.lab
-            employee_data["club"] = employee.club
-            employee_data["wagamanchi"] = employee.wagamanchi
             employee_data["ask_clicks"] = employee.ask_clicks
             response.append(employee_data)
 
@@ -208,6 +204,51 @@ def home():
         abort(404)
 
     return render_template("home.html", files = response)
+
+@app.route("/employee/<id>", methods=["GET"])
+def employee(id):
+    email = session.get('Email')
+    if email is not None:
+        print(email)
+    else:
+        flash("ログインしなおしてください。")
+        return redirect(url_for('register'))
+    print(id)
+
+    file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
+    data = id
+    
+    if data is not None:        
+        """
+        data = {
+            "link" = "Str",
+        }
+        """
+
+        employee = Employee.query.filter_by(id=id).first()
+
+        response = []
+
+        employee_data = {}
+        employee_data["name"] = employee.name
+        employee_data["filename"] = 'static/img/' + employee.filename
+        employee_data["link"] = employee.link
+        employee_data["faculty"] = employee.faculty
+        employee_data["firm"] = employee.firm
+        employee_data["industry"] = employee.industry
+        employee_data["position"] = employee.position
+        employee_data["lab"] = employee.lab
+        employee_data["club"] = employee.club
+        employee_data["wagamanchi"] = employee.wagamanchi
+        employee_data["ask_clicks"] = employee.ask_clicks
+        response.append(employee_data)
+        print(response)
+
+    else:
+        flash("内定者が存在しません")
+        return redirect(url_for('index'))
+
+    return render_template('employee.html', id=data)
 
 
 @app.route("/ask_click", methods=["GET","POST"])
@@ -244,13 +285,14 @@ def ask_click():
 def upload():
 
     if request.method == "POST":
-        if request.files:
+        print("chekc")
+        if request.form:
 
             if allowed_image_filesize(request.cookies.get("filesize")) == False:
-                flash("file exceeded max size", "failed")
+                flash("画質を下げてください")
                 return redirect(request.url)
-            
             data = request.form
+            print(data)
             image = request.files["image"]
             print(image)
 
@@ -259,11 +301,15 @@ def upload():
                 return redirect(request.url)
             
             if not allowed_image(image.filename):
-                flash("extension not allowed")
+                flash("PNG, JPG, JPEGを選んでください")
                 return redirect(request.url)
             else:
                 filename = secure_filename(image.filename)
-                print(filename)
+                emp_file = Employee.query.filter_by(filename=filename).first()
+                if emp_file:
+                    flash("ファイル名を変更してください")
+                    return redirect(request.url)
+
                 image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
 
                 employee = Employee(

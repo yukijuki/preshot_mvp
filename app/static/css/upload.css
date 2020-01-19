@@ -1,159 +1,193 @@
-/*
- * Copyright (c) 2012-2013 Thibaut Courouble
- * http://www.cssflow.com
- * Licensed under the MIT License
- *
- * Sass/SCSS source: https://goo.gl/qEV26
- * PSD by Hemn Chawroka: https://goo.gl/nXZHJ
- */
+.upload {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 80px;
+}
 
- body {
-    font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
-    color: #404040;
-    background: #93cedf;
-  }
-  
-  .container {
-    margin: 80px auto;
-    width: 400px;
+.upload-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.upload-container {
+    width: 100%;
+    bottom: 15px;
     text-align: center;
-  }
-  
-  .container > .dropdown {
-    margin: 0 20px;
-    vertical-align: top;
-  }
-  
-  .dropdown {
+}
+
+.status {
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.img-select{
+    margin-top:45px; 
+}
+
+.upload-container input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px #FF8F00;
+    width: 80%;
+    text-align: center;
+    line-height: 40px;
+}
+
+.custome-file-input {
+    margin: 0 auto;
+}
+
+.btn {
+    margin: 55px 30px 0 30px;
+    color: white;
+    border-radius: 20px;
+    height: 25px;
+    font-size: 10px;
+    width: 130px;
+    box-shadow: 1px 1px 1px 1px #c0c0c0;
+}
+
+.btn:active {
+    box-shadow: none;
+    position: relative;
+    top: 2px;
+}
+
+.submit {
+    background-color: #FF8F00;
+}
+
+.contact {
+    background-color: #00bfff;
+}
+
+.message-area {
+    height: 45%;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+.message-container {
+    position: absolute;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.message {
+    text-align: center;
+    margin: 0 30px;
+    height: 58px;
+    border-style: outset;
+    line-height: 50px;
+}
+
+.message p {
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+
+/*list用のCSSここから*/
+
+.btn-select {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    background: transparent;
+    border-radius: 6px;
+    border-bottom: solid 1px #FF8F00;
+    width: 80%;
+    cursor: pointer;
+    /* IEでcursorがチラついたので */
+}
+
+.label {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    padding-top: 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+    line-height: 40px;
+}
+
+
+/* （IE用） */
+
+.select::-ms-expand {
+    display: none;
+}
+
+.select:focus {
+    z-index: -1;
+    opacity: 1;
+}
+
+::-ms-expand {
+    /* （IE用） */
+    display: none;
+}
+
+
+
+/*ここまで*/
+
+.image-upload {
     display: inline-block;
     position: relative;
     overflow: hidden;
-    height: 28px;
-    width: 150px;
-    background: #f2f2f2;
-    border: 1px solid;
-    border-color: white #f7f7f7 whitesmoke;
-    border-radius: 3px;
-    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-    background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-    background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-  }
-  
-  .dropdown:before, .dropdown:after {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    top: 9px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 4px dashed;
-    border-color: #888888 transparent;
-    pointer-events: none;
-  }
-  
-  .dropdown:before {
-    border-bottom-style: solid;
-    border-top: none;
-  }
-  
-  .dropdown:after {
-    margin-top: 7px;
-    border-top-style: solid;
-    border-bottom: none;
-  }
-  
-  .dropdown-select {
-    position: relative;
-    width: 130%;
-    margin: 0;
-    padding: 6px 8px 6px 10px;
-    height: 28px;
-    line-height: 14px;
-    font-size: 12px;
-    color: #62717a;
-    text-shadow: 0 1px white;
-    background: #f2f2f2; /* Fallback for IE 8 */
-    background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
-    border: 0;
-    border-radius: 0;
-    -webkit-appearance: none;
-  }
-  
-  .dropdown-select:focus {
-    z-index: 3;
-    width: 100%;
-    color: #394349;
-    outline: 2px solid #49aff2;
-    outline: 2px solid -webkit-focus-ring-color;
-    outline-offset: -2px;
-  }
-  
-  .dropdown-select > option {
-    margin: 3px;
-    padding: 6px 8px;
-    text-shadow: none;
-    background: #f2f2f2;
-    border-radius: 3px;
+    border-radius: 30px;
+    background: white;
+    color: #FF8F00;
+    text-align: center;
+    line-height: 25px;
+    width: 130px;
     cursor: pointer;
-  }
-  
-  /* Fix for IE 8 putting the arrows behind the select element. */
-  
-  .lt-ie9 .dropdown {
-    z-index: 1;
-  }
-  
-  .lt-ie9 .dropdown-select {
-    z-index: -1;
-  }
-  
-  .lt-ie9 .dropdown-select:focus {
-    z-index: 3;
-  }
-  
-  /* Dirty fix for Firefox adding padding where it shouldn't. */
-  
-  @-moz-document url-prefix() {
-    .dropdown-select {
-      padding-left: 6px;
-    }
-  }
-  
-  .dropdown-dark {
-    background: #444;
-    border-color: #111111 #0a0a0a black;
-    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-    background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-    background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
-    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
-  }
-  
-  .dropdown-dark:before {
-    border-bottom-color: #aaa;
-  }
-  
-  .dropdown-dark:after {
-    border-top-color: #aaa;
-  }
-  
-  .dropdown-dark .dropdown-select {
-    color: #aaa;
-    text-shadow: 0 1px black;
-    background: #444;  /* Fallback for IE 8 */
-  }
-  
-  .dropdown-dark .dropdown-select:focus {
-    color: #ccc;
-  }
-  
-  .dropdown-dark .dropdown-select > option {
-    background: #444;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-  }
-  
+    box-shadow: 1px 1px 1px 1px #c0c0c0;
+}
+
+.image-upload:active {
+    box-shadow: none;
+    position: relative;
+    top: 2px;
+}
+
+.image-upload input[type=file] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.uploadValue {
+    display: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    padding: 3px;
+    color: #ffffff;
+}
+
+.status p {
+    margin-bottom: 10px;
+}

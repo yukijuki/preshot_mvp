@@ -3,7 +3,7 @@
     padding: 0px;
 }
 
-html{
+html {
     height: 100%;
 }
 
@@ -15,14 +15,21 @@ body {
     background-color: white;
 }
 
-.alert{
+a {
+    text-decoration: none;
+}
+
+.alert {
     background-color: rgba(0, 255, 127, 0.8);
     width: 100%;
     height: 30px;
-	text-align: center;
+    text-align: center;
     font-family: "serif";
     position: fixed;
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
 ul {
@@ -38,7 +45,6 @@ header {
     z-index: 10;
     font-size: 30px;
 }
-
 
 .tab {
     color: white;
@@ -76,11 +82,15 @@ header {
     line-height: 50px;
 }
 
+
+
+
+
 .fas {
     color: white;
 }
 
-.container{
+.container {
     width: 100%;
     height: 100%;
 }
