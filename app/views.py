@@ -75,7 +75,7 @@ def allowed_image_filesize(filesize):
 
 @app.route("/")
 def index():
-    return render_template("register.html")
+    return render_template("index.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -83,7 +83,6 @@ def register():
     if request.method == "POST":
         data = request.form
         if data["email"] == "":
-            flash("メールアドレスを入力してください。")
             print("email absent")
             return redirect(url_for('register'))
 
@@ -128,7 +127,6 @@ def profile():
     if email is not None:
         print(email)
     else:
-        flash("ログインしなおしてください。")
         return redirect(url_for('register'))
 
     student = Student.query.filter_by(email=email).first()
@@ -140,11 +138,9 @@ def profile():
 
         if data["password"] == "":
             data["password"] = student.password
-            print(data["password"])
 
         if data["name"] == '':
             data["name"] = student.name
-            print(data["name"])
 
         if data["industry"] == '':
             data["industry"] = student.industry
@@ -153,6 +149,8 @@ def profile():
         student.name = data["name"]
         student.industry = data["industry"]
         db.session.commit()
+        flash("変更されました。")
+
 
         session["Industry"] = data["industry"]
 
@@ -163,6 +161,13 @@ def profile():
 
 @app.route("/home", methods=["GET"])
 def home():
+    email = session.get('Email')
+    if email is not None:
+        print(email)
+    else:
+        flash("ログインしなおしてください。")
+        return redirect(url_for('register'))
+
     file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
     try:        
         """

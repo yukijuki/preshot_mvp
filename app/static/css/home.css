@@ -1,54 +1,41 @@
-*{
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
-}
-
-body{
-	height: 100vh;
-	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: #FFF;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
 
 /*- - - - - - C O N T A C T - C A R D S - - - - - */
 
+.card-list{
+	width: 100%;
+	margin-top: 50px;
+	font-size:0;
+	padding-top: 10px;
+}
+.no-card{
+	display: inline-block;
+	width: 2.5%;
+}
 .card{
-	width: 200px; /* ⬅ Size - Small (width: 200px), Medium (width: 225px), Large (width: 250px) */
+	width: 45%; 
+	height: 284px;
 	overflow: hidden;
 	background-color: #FFFFFF;
-   
 	border-radius: 15px;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 	text-align: center;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
+	display: inline-block;
+	margin-bottom: 10px
 }
 
-	.card:first-of-type{
-		margin-right: 25px;
-	}
-
-	.card:hover{
-		margin-top: -10px;
-	}
 
 .banner{
 	height: 100px;
 	width: 100%;
 	padding-top: 30px;
-	background-color: rgb(241, 241, 241);
+	background-color: #FF8F00;
+	background: linear-gradient(-135deg, rgb(238, 240, 109), rgba(240, 152, 37, 0.8), rgba(245, 86, 232, 0.8));
+
 	background-size: cover;
 	background-position: center;
 }
-
-	.card:first-of-type .banner{
-		background-image: url("https://images.unsplash.com/photo-1570631810485-911f9516d8d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80");
-	}
 
 .avatar{
 	height: 100px;
@@ -60,60 +47,51 @@ body{
 	border-radius: 100%;
 }
 
-	.card:nth-child(1) .avatar{
-		background-image: url("https://s.cdpn.io/profiles/user/2242656/512.jpg?1561922560");
-	}
-
-h3, a, i{
-	font-family: 'Roboto', sans-serif;
+.card h3, a, i{
 	font-weight: lighter;
 	-webkit-transition: .1s ease-in-out;
 	transition: .1s ease-in-out;
 }
 
-	h3{
-		margin-top: 45px;
+	.card h3{
+		margin-top: 15px;
 		margin-bottom: 5px;
 		font-size: 18px;
 		color: #212121;
 	}
 
-	a{
-		display: block;
-		padding: 5px 0px;
+	.card a{
+
+		padding: 2px 0px;
 		font-size: 14px;
-		color: #9E9E9E;
+		color: white;
 		text-decoration: none;
+		font-weight: 900
 	}
-
-		a:hover{
-			background-color: #FAFAFA;
-			color: inherit;
-    }
-
-  p{
+	
+.card p{
     display: block;
-    padding: 5px 0px;
+    padding: 1px 0px;
     font-size: 14px;
     color: rgb(110, 110, 110);
     text-decoration: none;
   }
 
-ul{
+.card ul{
 	margin-top: 10px;
 	padding: 15px 0px;
-	background-color: #FAFAFA;
+	background-color: #FF8F00;
 }
 
-	ul a{
+	.card ul a{
 		display: inline;
 		margin-right: 10px;
 	}
 
-		ul a:last-of-type{
-			margin-right: 0px;
-		}
-
-			ul a i:hover{
-				transform: scale(1.5);
+		.card ul a:last-of-type{
+				margin-right: 0px;
 			}
+
+				.card ul a i:hover{
+					transform: scale(1.5);
+				}
