@@ -1,3 +1,8 @@
+html,
+body {
+    overflow: hidden;
+}
+
 .profile {
     width: 100vw;
     height: 100vh;
