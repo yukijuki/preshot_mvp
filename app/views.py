@@ -1,4 +1,4 @@
-from tasks import create_image
+from app import app
 from flask import Flask, request, redirect, session, send_from_directory, jsonify, render_template, make_response, url_for, abort, flash
 from flask_sqlalchemy import SQLAlchemy
 import datetime, os, secrets
@@ -7,7 +7,6 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = '/static/img'
 PHISICAL_ROOT = os.path.dirname( os.path.abspath( __file__ ) )
 
-app = Flask(__name__)
 # app.config.from_object("config.DevelopmentConfig")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SECRET_KEY"] = "superSecret"
@@ -288,7 +287,3 @@ def upload():
 def logout():
     session.pop('email', None)
     return redirect(url_for('register'))
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
