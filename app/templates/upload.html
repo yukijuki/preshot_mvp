@@ -3,149 +3,150 @@
 <title>Preshot/Upload</title>
 {% endblock %} {% block content %}
 <div class="upload">
-    <div class="upload-area">
-        <div class="upload-container">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="upload-area">
+            <div class="upload-container">
 
-            <div class="status">
-                <p>image</p>
-                <div class="image-upload">choose
-                    <input oninput="filesize(this);" type="file" class="custome-file-input" id="image" onchange="uv.style.display='inline-block'; uv.value=this.value;" />
-                    <input type="text" id="uv" class="uploadValue" disabled />
+                <p class="status">名前
+                    <br> <input placeholder="your name" name="name" id="name" type="text" required>
+                </p>
+
+                <p class="status">SNSのリンク先
+                    <br><input placeholder="Enter your link" type="text" id="link" name="link" required>
+                </p>
+
+                <div class="status btn-select">学部を選択してください
+                    <p class="label faculty-label">-</p>
+                    <select class="select faculty-select" id="faculty" name="faculty" size="1" required>
+                            <option value="なし" selected>なし</option>
+                            <option value="環境情報学部">環境情報学部</option>
+                            <option value="総合政策学部">総合政策学部</option>
+                            <option value="看護医療学部">看護医療学部</option>
+                    </select>
                 </div>
-            </div>
 
-            <p class="status">name
-                <br> <input placeholder="your name" id="name" type="text">
-            </p>
+                <p class="status">内定先を記入してください
+                    <br><input placeholder="Enter your firm" type="firm" id="firm" name="firm" required>
+                </p>
 
-            <p class="status">link
-                <br><input placeholder="Enter your link" type="text" id="link">
-            </p>
-
-            <div class="status btn-select">学部
-                <p class="label faculty-label">学部を選択してください</p>
-                <select class="select faculty-select" id="faculty" name="faculty" size="1">
-                        <option value="学部を選択してください" selected>学部を選択してください</option>
-                        <option value="環境情報学部">環境情報学部</option>
-                        <option value="総合政策学部">総合政策学部</option>
-                        <option value="看護医療学部">看護医療学部</option>
+                <div class="status btn-select">業界を選択してください
+                    <p class="label industry-label">-</p>
+                    <select class="select industry-select" id="industry" name="industry" size="1" required>
+                            <option value="なし" selected>なし</option>
+                            <option value="商社">商社</option>
+                            <option value="メーカー">メーカー</option>
+                            <option value="小売">小売</option>
+                            <option value="金融">金融</option>
+                            <option value="サービス">サービス</option>
+                            <option value="マスコミ">マスコミ</option>
+                            <option value="IT・通信">IT・通信</option>
+                            <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+                            <option value="その他">その他</option>
                     </select>
-            </div>
+                </div>
 
-            <p class="status">firm
-                <br><input placeholder="Enter your firm" type="firm" id="firm">
-            </p>
-
-            <div class="status btn-select">業界
-                <p class="label industry-label">業界を選択してください</p>
-                <select class="select industry-select" id="industry" name="industry" size="1">
-                        <option value="業界を選択してください" selected>業界を選択してください</option>
-                        <option value="商社">商社</option>
-                        <option value="メーカー">メーカー</option>
-                        <option value="小売">小売</option>
-                        <option value="金融">金融</option>
-                        <option value="サービス">サービス</option>
-                        <option value="マスコミ">マスコミ</option>
-                        <option value="IT・通信">IT・通信</option>
-                        <option value="官公庁・公社・団体">官公庁・公社・団体</option>
-                        <option value="その他">その他</option>
+                <div class="status btn-select">職種を選択してください
+                    <p class="label position-label">-</p>
+                    <select class="select position-select" id="potision" name="position" size="1" required>
+                            <option value="なし" selected>なし</option>
+                            <option value="総合職・一般職">総合職・一般職</option>
+                            <option value="事務・管理">事務・管理</option>
+                            <option value="企画職">企画職</option>
+                            <option value="開発・技術職">開発・技術職</option>
+                            <option value="営業職">営業職</option>
+                            <option value="マーケティング・広報">マーケティング・広報</option>
+                            <option value="販売・接客">販売・接客</option>
+                            <option value="教育・保育">教育・保育</option>
+                            <option value="医療・福祉・看護">医療・福祉・看護</option>
+                            <option value="建築・土木">建築・土木</option>
+                            <option value="研究職">研究職</option>
+                            <option value="その他">その他</option>
                     </select>
-            </div>
+                </div>
 
-            <div class="status btn-select">職種
-                <p class="label position-label">職種を選択してください</p>
-                <select class="select position-select" id="potision" name="potision" size="1">
-                        <option value="職種を選択してください" selected>職種を選択してください</option>
-                        <option value="総合職・一般職">総合職・一般職</option>
-                        <option value="事務・管理">事務・管理</option>
-                        <option value="企画職">企画職</option>
-                        <option value="開発・技術職">開発・技術職</option>
-                        <option value="営業職">営業職</option>
-                        <option value="マーケティング・広報">マーケティング・広報</option>
-                        <option value="販売・接客">販売・接客</option>
-                        <option value="教育・保育">教育・保育</option>
-                        <option value="医療・福祉・看護">医療・福祉・看護</option>
-                        <option value="建築・土木">建築・土木</option>
-                        <option value="研究職">研究職</option>
-                        <option value="その他">その他</option>
+
+                <div class="status btn-select">研究会の領域を選択してください
+                    <p class="label lab-label">-</p>
+                    <select class="select lab-select" id="lab" name="lab" size="1" required>
+                            <option value="なし" selected>なし</option>
+                            <option value="法学">法学</option>
+                            <option value="政治/経済">政治/経済</option>
+                            <option value="経営/商">経営/商</option>
+                            <option value="国際/社会">国際/社会</option>
+                            <option value="文学/言語">文学/言語</option>
+                            <option value="教育">教育</option>
+                            <option value="農/水産">農/水産</option>
+                            <option value="理/工">理/工</option>
+                            <option value="医療/薬">医療/薬</option>
+                            <option value="情報/テクノロジー">情報/テクノロジー</option>
+                            <option value="芸術/音楽">芸術/音楽</option>
+                            <option value="芸術/音楽">建築/土木</option>
+                            <option value="その他">その他</option>
+                            <option value="なし">なし</option>
                     </select>
-            </div>
+                </div>
 
-
-            <div class="status btn-select">研究会領域
-                <p class="label lab-label">研究会の領域を選択してください</p>
-                <select class="select lab-select" id="lab" name="lab" size="1">
-                        <option value="研究会の領域を選択してください" selected>研究会の領域を選択してください</option>
-                        <option value="法学">法学</option>
-                        <option value="政治/経済">政治/経済</option>
-                        <option value="経営/商">経営/商</option>
-                        <option value="国際/社会">国際/社会</option>
-                        <option value="文学/言語">文学/言語</option>
-                        <option value="教育">教育</option>
-                        <option value="農/水産">農/水産</option>
-                        <option value="理/工">理/工</option>
-                        <option value="医療/薬">医療/薬</option>
-                        <option value="情報/テクノロジー">情報/テクノロジー</option>
-                        <option value="芸術/音楽">芸術/音楽</option>
-                        <option value="芸術/音楽">建築/土木</option>
-                        <option value="その他">その他</option>
-                        <option value="なし">なし</option>
+                <div class="status btn-select">サークル・体育会を選択してください
+                    <p class="label club-label">-</p>
+                    <select class="select club-select" id="club" name="club" size="1" required>
+                            <option value="なし" selected>なし</option>
+                            <option value="野球/ソフトボール">野球/ソフトボール</option>
+                            <option value="サッカー/フットサル">サッカー/フットサル</option>
+                            <option value="バスケットボール">バスケットボール</option>
+                            <option value="テニス/バトミントン/卓球">テニス/バトミントン/卓球</option>
+                            <option value="アメフト/ラグビー">アメフト/ラグビー</option>
+                            <option value="バレーボール">バレーボール</option>
+                            <option value="ハンドボール/ドッジボール">ハンドボール/ドッジボール</option>
+                            <option value="陸上/体操">陸上/体操</option>
+                            <option value="自転車競技">自転車競技</option>
+                            <option value="ウォータースポーツ">ウォータースポーツ</option>
+                            <option value="スカイスポーツ">スカイスポーツ</option>
+                            <option value="ウィンタースポーツ">ウィンタースポーツ</option>
+                            <option value="武道/格闘技">武道/格闘技</option>
+                            <option value="射的スポーツ">射的スポーツ</option>
+                            <option value="ゴルフ" selected>ゴルフ</option>
+                            <option value="応援/チア">応援/チア</option>
+                            <option value="フライングディスク">フライングディスク</option>
+                            <option value="ボウリング/ビリヤード">ボウリング/ビリヤード</option>
+                            <option value="アニマルスポーツ">アニマルスポーツ</option>
+                            <option value="障害者スポーツ">障害者スポーツ</option>
+                            <option value="音楽/芸術">音楽/芸術</option>
+                            <option value="ダンス">ダンス</option>
+                            <option value="アウトドア">アウトドア</option>
+                            <option value="旅行">旅行</option>
+                            <option value="食/農業">食/農業</option>
+                            <option value="e-sports/ボードゲーム">e-sports/ボードゲーム</option>
+                            <option value="機械/情報">機械/情報</option>
+                            <option value="国際交流/イベント">国際交流/イベント</option>
+                            <option value="ビジネス/政治経済">ビジネス/政治経済</option>
+                            <option value="その他">その他</option>
+                            <option value="なし">なし</option>
                     </select>
-            </div>
+                </div>
 
-            <div class="status btn-select">サークル・体育会
-                <p class="label club-label">サークル・体育会を選択してください</p>
-                <select class="select club-select" id="club" name="club" size="1">
-                        <option value="サークル・体育会を選択してください" selected>サークル・体育会を選択してください</option>
-                        <option value="野球/ソフトボール">野球/ソフトボール</option>
-                        <option value="サッカー/フットサル">サッカー/フットサル</option>
-                        <option value="バスケットボール">バスケットボール</option>
-                        <option value="テニス/バトミントン/卓球">テニス/バトミントン/卓球</option>
-                        <option value="アメフト/ラグビー">アメフト/ラグビー</option>
-                        <option value="バレーボール">バレーボール</option>
-                        <option value="ハンドボール/ドッジボール">ハンドボール/ドッジボール</option>
-                        <option value="陸上/体操">陸上/体操</option>
-                        <option value="自転車競技">自転車競技</option>
-                        <option value="ウォータースポーツ">ウォータースポーツ</option>
-                        <option value="スカイスポーツ">スカイスポーツ</option>
-                        <option value="ウィンタースポーツ">ウィンタースポーツ</option>
-                        <option value="武道/格闘技">武道/格闘技</option>
-                        <option value="射的スポーツ">射的スポーツ</option>
-                        <option value="ゴルフ" selected>ゴルフ</option>
-                        <option value="応援/チア">応援/チア</option>
-                        <option value="フライングディスク">フライングディスク</option>
-                        <option value="ボウリング/ビリヤード">ボウリング/ビリヤード</option>
-                        <option value="アニマルスポーツ">アニマルスポーツ</option>
-                        <option value="障害者スポーツ">障害者スポーツ</option>
-                        <option value="音楽/芸術">音楽/芸術</option>
-                        <option value="ダンス">ダンス</option>
-                        <option value="アウトドア">アウトドア</option>
-                        <option value="旅行">旅行</option>
-                        <option value="食/農業">食/農業</option>
-                        <option value="e-sports/ボードゲーム">e-sports/ボードゲーム</option>
-                        <option value="機械/情報">機械/情報</option>
-                        <option value="国際交流/イベント">国際交流/イベント</option>
-                        <option value="ビジネス/政治経済">ビジネス/政治経済</option>
-                        <option value="その他">その他</option>
-                        <option value="なし">なし</option>
+                <div class="status btn-select">後輩におねだりをしよう
+                    <p class="label wagamanchi-label">-</p>
+                    <select class="select wagamanchi-select" id="wagamanchi" name="wagamanchi" size="1" required>
+                            <option value="なし" selected>なし</option>
+                            <option value="ドリンク">ドリンク</option>
+                            <option value="サブウェイ">サブウェイ</option>
+                            <option value="フリーハグ">フリーハグ</option>
                     </select>
-            </div>
+                </div>
 
-            <div class="status btn-select">RETURN
-                <p class="label wagamanchi-label">returnを選択してください</p>
-                <select class="select wagamanchi-select" id="wagamanchi" name="wagamanchi" size="1">
-                        <option value="returnを選択してください" selected>returnを選択してください</option>
-                        <option value="なし">なし</option>
-                        <option value="ドリンク">ドリンク</option>
-                        <option value="サブウェイ">サブウェイ</option>
-                        <option value="フリーハグ">フリーハグ</option>
-                    </select>
-            </div>
+                <div class="status img-select">
+                    <p>プロフィール写真を選択してください</p>
+                    <div class="image-upload">選択
+                        <input oninput="filesize(this);" type="file" class="custome-file-input" name="image" id="image" onchange="uv.style.display='inline-block'; uv.value=this.value;" required />
+                        <input type="text" id="uv" class="uploadValue" disabled />
+                    </div>
+                </div>
 
-            <button class="btn submit" 　type="submit">Data Commit</button>
+
+                <button class="btn submit" type="submit">Data Commit</button>
+            </div>
         </div>
-    </div>
-
+    </form>
 
 
     <div class="message-area">
@@ -215,18 +216,32 @@
 <script>
     function submit_entry() {
         
-        var password = document.getElementById("password");
+        var image = document.getElementById("image");
         var name = document.getElementById("name");
+        var link = document.getElementById("link");
+        var faculty = document.getElementById("faculty");
+        var firm = document.getElementById("firm");
         var industry = document.getElementById("industry");
+        var position = document.getElementById("position");
+        var lab = document.getElementById("lab");
+        var club = document.getElementById("club");
+        var wagamanchi = document.getElementById("wagamanchi");
 
         var entry = {
-            password: password.value,
+            image: image.value,
             name: name.value,
-            industry: industry.value
+            link: link.value,
+            faculty: faculty.value,
+            firm: firm.value,
+            industry: industry.value,
+            position: position.value,
+            lab: lab.value,
+            club: club.value,
+            wagamanchi: wagamanchi.value
         }
         console.log(entry)
 
-        fetch(`${window.origin}/profile`, {
+        fetch(`${window.origin}/upload`, {
             method: "POST",
             credentials: "include",
             body: JSON.stringify(entry),
@@ -243,7 +258,6 @@
             }
 
             response.json().then(function (data) {
-                location.reload();
                 console.log(data)
             })
         })

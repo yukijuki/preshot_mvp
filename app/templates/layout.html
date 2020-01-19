@@ -15,11 +15,11 @@
 <body>
     <header>
         <ul class="tab-nav">
-            <li class="tab left is-active">
-                <a href="/home" class="fas fa-home"></a>
-            </li>
             <li class="tab right">
                 <a href="/profile" class="fas fa-cogs"></a>
+            </li>
+            <li class="tab left is-active">
+                <a href="/home" class="fas fa-home"></a>
             </li>
         </ul>
 
@@ -36,7 +36,6 @@
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
     </script>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     {% block script %}{% endblock %}
 
     <script>
