@@ -16,7 +16,6 @@ app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 3000 * 3000
 
 app.debug = True
 db = SQLAlchemy(app)
-
 # Define Models
 
 class Student(db.Model):
