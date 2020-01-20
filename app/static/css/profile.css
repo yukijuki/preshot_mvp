@@ -3,6 +3,10 @@ body {
     overflow: hidden;
 }
 
+.alert {
+    padding-top: 52px;
+}
+
 .profile {
     width: 100vw;
     height: 100vh;
@@ -87,6 +91,14 @@ body {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+}
+
+.mail-address {
+    line-height: 34px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px #FF8F00;
 }
 
 

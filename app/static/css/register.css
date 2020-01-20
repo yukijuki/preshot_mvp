@@ -15,6 +15,10 @@ ul {
     list-style: None;
 }
 
+.alert {
+    padding-top: 2px;
+}
+
 .login {
     width: 100vw;
     height: 100vh;
@@ -33,7 +37,8 @@ ul {
 }
 
 .logo img {
-    width: 80%;
+    width: 60%;
+    padding-right: 20px;
 }
 
 .login_bottom {
@@ -45,13 +50,13 @@ ul {
     margin-top: 40px;
 }
 
-.container {
+.form-container {
     height: 60px;
     padding: 0;
     margin-bottom: 30px;
 }
 
-.container button {
+.form-container button {
     padding: 0 70px;
     border-radius: 30px;
     height: 45px;
@@ -59,7 +64,7 @@ ul {
 }
 
 #email,
-#password {
+.login-password {
     padding: 0 55px;
     height: 30px;
     text-align: center;
@@ -80,10 +85,6 @@ ul {
     background-color: #FF8F00;
     color: white;
     box-shadow: 2px 2px 5px 2px #b0c4de;
-}
-
-button.btn2 {
-    font-size: 1em;
 }
 
 .alert {
