@@ -19,7 +19,7 @@
     <div class="card" id={{file.id}} onclick="getId(this.id);">
       <div class="banner">
           <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
-          <img class="avatar" src={{file.filename}}>
+          <a href="/employee/{{file.id}}"><img class="avatar" src={{file.filename}}><a>
       </div>
       <h3>{{ file.name }}</h3>
       <p>業界 -{{ file.industry }}</p>
@@ -40,6 +40,7 @@
 {% endblock content %}
 
 {% block script %}
+<!--ask clicks-->
 <script>
     function getId(id) {
       

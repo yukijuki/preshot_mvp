@@ -14,6 +14,9 @@ app.config["UPLOAD_FOLDER"] = PHISICAL_ROOT + UPLOAD_FOLDER
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG"]
 app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 3000 * 3000
 
+#see the img folder
+#file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
+
 app.debug = True
 db = SQLAlchemy(app)
 # Define Models
@@ -62,19 +65,8 @@ def allowed_image(filename):
         return False
 
 
-def allowed_image_filesize(filesize):
-
-    if int(filesize) <= app.config["MAX_IMAGE_FILESIZE"]:
-        return True
-    else:
-        return False
-
 @app.route("/")
 def index():
-    return render_template("register.html")
-
-@app.route("/introduction")
-def introduction():
     return render_template("index.html")
 
 
@@ -167,8 +159,7 @@ def home():
     else:
         flash("ログインしなおしてください。")
         return redirect(url_for('register'))
-
-    file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
+    
     try:        
         """
         data = {
@@ -199,6 +190,7 @@ def home():
             employee_data["industry"] = employee.industry
             employee_data["ask_clicks"] = employee.ask_clicks
             response.append(employee_data)
+        print(response)
 
     except FileNotFoundError:
         abort(404)
@@ -213,23 +205,12 @@ def employee(id):
     else:
         flash("ログインしなおしてください。")
         return redirect(url_for('register'))
-    print(id)
-
-    file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
-    data = id
     
-    if data is not None:        
-        """
-        data = {
-            "link" = "Str",
-        }
-        """
-
+    employee_data = {}
+    try:        
         employee = Employee.query.filter_by(id=id).first()
 
-        response = []
-
-        employee_data = {}
+        employee_data["id"] = employee.id
         employee_data["name"] = employee.name
         employee_data["filename"] = 'static/img/' + employee.filename
         employee_data["link"] = employee.link
@@ -241,14 +222,11 @@ def employee(id):
         employee_data["club"] = employee.club
         employee_data["wagamanchi"] = employee.wagamanchi
         employee_data["ask_clicks"] = employee.ask_clicks
-        response.append(employee_data)
-        print(response)
+    except FileNotFoundError:
+        abort(404)
+        flash("バグを運営に報告してください")
 
-    else:
-        flash("内定者が存在しません")
-        return redirect(url_for('index'))
-
-    return render_template('employee.html', id=data)
+    return render_template('employee.html', file=employee_data)
 
 
 @app.route("/ask_click", methods=["GET","POST"])
@@ -288,13 +266,8 @@ def upload():
         print("chekc")
         if request.form:
 
-            if allowed_image_filesize(request.cookies.get("filesize")) == False:
-                flash("画質を下げてください")
-                return redirect(request.url)
             data = request.form
-            print(data)
             image = request.files["image"]
-            print(image)
 
             if image.filename == "":
                 flash("Image must have a name")
@@ -338,3 +311,19 @@ def upload():
 def logout():
     session.pop('email', None)
     return redirect(url_for('register'))
+
+@app.route("/delete/<id>", methods=['POST', "GET", "DELETE"])
+def employee_delete(id):
+    email = session.get('Email')
+    if email == "admin@gmail.com":
+        print(email)
+    else:
+        flash("adminに入ってください")
+        return redirect(url_for('register'))
+
+    b = Employee.query.filter_by(id=id).first()
+    db.session.delete(b)
+    db.session.commit()
+    flash("deleted")
+
+    return render_template("admin.html")
