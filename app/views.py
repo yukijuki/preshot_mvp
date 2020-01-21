@@ -49,9 +49,6 @@ class Ask(db.Model):
     created_at = db.Column(db.DateTime())
 
 #----------------------------------------------------------------
-# db.drop_all()
-# db.create_all()
-# db.session.commit()
 #User login
 def allowed_image(filename):
     if not "." in filename:
@@ -74,6 +71,10 @@ def allowed_image_filesize(filesize):
 
 @app.route("/")
 def index():
+    return render_template("register.html")
+
+@app.route("/introduction")
+def introduction():
     return render_template("index.html")
 
 

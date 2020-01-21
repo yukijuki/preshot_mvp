@@ -1,0 +1,40 @@
+@media screen and (min-width:768px) and ( max-width:1024px) {
+    header,
+    .tab-nav,
+    .tab {
+        height: 80px;
+    }
+    .fas {
+        font-size: 50px;
+    }
+    .logo img {
+        width: 60%;
+    }
+    #email,
+    .login-password {
+        padding: 0 55px;
+        height: 60px;
+        font-size: 35px;
+        border-bottom: solid 5px #FF8F00;
+    }
+    .form-container {
+        height: auto;
+        margin-bottom: 60px;
+    }
+    .form-container button {
+        height: 60px;
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .logo img {
+        width: 30%;
+    }
+    .login_top {
+        height: 60%;
+    }
+    .login_bottom {
+        height: 40%;
+    }
+}
