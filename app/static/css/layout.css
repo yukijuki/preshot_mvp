@@ -89,6 +89,11 @@ header {
     line-height: 50px;
 }
 
+.tab-logo a{
+    padding-top: 17px;
+
+}
+
 .tab-logo img {
     color: white;
     width: 130px;
