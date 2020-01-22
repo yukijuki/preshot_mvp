@@ -1,28 +1,30 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/employee.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">{% endblock %} {% block title %}
+<title>Preshot/Employee</title>
+{% endblock %} {% block content %}
+<!-- Contact Card ~ #01 -->
+{% if file %}
 
-{% block css %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-{% endblock %}
+<div class="employee-card" id={{file.id}}>
+    <div class="employee-profile">
+        <div class="banner">
+            <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
+            <img src=/{{file.filename}} alt="pic1">
+        </div>
 
-{% block title %}
-  <title>Preshot/Employee</title>
-{% endblock %}
-
-{% block content %}    
-  <!-- Contact Card ~ #01 -->
-  {% if file %}
-    <div class="card" id={{file.id}}>
-      <h3>{{ file.name }}</h3>
-      <img src=/{{file.filename}} alt="pic1">
-      <p class="texter">会社 - {{ file.firm }}</p> 
-      <p class="texter">業界 -{{ file.industry }}</p>
-      <p class="texter">会社 - {{ file.position }}</p> 
-      <p class="texter">会社 - {{ file.lab }}</p> 
-      <p class="texter">業界 -{{ file.club }}</p>
-      <p class="texter">会社 - {{ file.wagamanchi }}</p> 
-      <a href="/employee/{{file.id}}"><button>連絡してみる</button><a>
+        <h3>{{ file.name }}</h3>
+        <p class="texter">内定先 / {{ file.firm }}</p>
+        <p class="texter">業界 / {{ file.industry }}</p>
+        <p class="texter">職種 / {{ file.position }}</p>
+        <p class="texter">研究会領域 / {{ file.lab }}</p>
+        <p class="texter">サークル・体育会 / {{ file.club }}</p>
+        <p class="texter">奢ってほしいもの / {{ file.wagamanchi }}</p>
     </div>
-  {% else %}
-    <h2>No files</h2>
-  {% endif %} 
-{% endblock content %}
+    <div class="contact-button">
+        <a href="/employee/{{file.id}}"></a><button>連絡してみる</button></a>
+    </div>
+</div>
+{% else %}
+<h2>No files</h2>
+{% endif %} {% endblock content %}

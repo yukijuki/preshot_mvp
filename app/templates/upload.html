@@ -41,6 +41,7 @@
                             <option value="マスコミ">マスコミ</option>
                             <option value="IT・通信">IT・通信</option>
                             <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+                            <option value="医療">医療</option>
                             <option value="その他">その他</option>
                     </select>
                 </div>
@@ -128,8 +129,9 @@
                     <p class="label wagamanchi-label">-</p>
                     <select class="select wagamanchi-select" id="wagamanchi" name="wagamanchi" size="1" required>
                             <option value="なし" selected>なし</option>
-                            <option value="ドリンク">ドリンク</option>
-                            <option value="サブウェイ">サブウェイ</option>
+                            <option value="ドリンク（150円未満）">ドリンク（150円未満）</option>
+                            <option value="コーヒー（200円未満）">コーヒー（200円未満）</option>
+                            <option value="サブウェイ（550円未満）">サブウェイ（550円未満）</option>
                             <option value="フリーハグ">フリーハグ</option>
                     </select>
                 </div>
@@ -143,7 +145,7 @@
                 </div>
 
 
-                <button class="btn submit" type="submit">Data Commit</button>
+                <button class="btn submit" type="submit">送信</button>
             </div>
         </div>
     </form>
@@ -215,7 +217,7 @@
 </script>
 <script>
     function submit_entry() {
-        
+
         var image = document.getElementById("image");
         var name = document.getElementById("name");
         var link = document.getElementById("link");
@@ -242,25 +244,25 @@
         console.log(entry)
 
         fetch(`${window.origin}/upload`, {
-            method: "POST",
-            credentials: "include",
-            body: JSON.stringify(entry),
-            cache: "no-cache",
-            headers: new Headers({
-                "content-type": "application/json"
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify(entry),
+                cache: "no-cache",
+                headers: new Headers({
+                    "content-type": "application/json"
+                })
             })
-        }) 
-        .then(function (response) {
+            .then(function(response) {
 
-            if (response.status != 200) {
-                console.log(`response status was not 200: ${response.status}`);
-                return ;
-            }
+                if (response.status != 200) {
+                    console.log(`response status was not 200: ${response.status}`);
+                    return;
+                }
 
-            response.json().then(function (data) {
-                console.log(data)
+                response.json().then(function(data) {
+                    console.log(data)
+                })
             })
-        })
     }
 </script>
 {% endblock %}

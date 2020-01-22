@@ -8,7 +8,8 @@
         font-size: 50px;
     }
     .logo img {
-        width: 60%;
+        width: 90%;
+        padding-top: 15px;
     }
     #email,
     .login-password {
@@ -25,16 +26,61 @@
         height: 60px;
         font-size: 25px;
     }
+    .card-list {
+        margin-top: 85px;
+    }
+    .card {
+        margin-bottom: 30px;
+    }
+    .employee-profile {
+        top: 60px;
+    }
+    .banner {
+        height: 225px;
+    }
+    .employee-card p {
+        padding: 20px 0;
+        font-size: 25px;
+    }
+    .contact-button {
+        top: 80%;
+    }
+    .contact-button button {
+        height: 80px;
+        font-size: 33px;
+        width: 700px;
+    }
 }
 
 @media screen and (min-width:1024px) {
-    .logo img {
-        width: 30%;
+    .card-list {
+        margin-top: 85px;
+    }
+    .card {
+        margin-bottom: 30px;
     }
     .login_top {
         height: 60%;
     }
     .login_bottom {
         height: 40%;
+    }
+    .employee-profile {
+        top: 60px;
+    }
+    .banner {
+        height: 300px;
+    }
+    .employee-card p {
+        padding: 20px 0;
+        font-size: 40px;
+    }
+    .contact-button {
+        top: 80%;
+    }
+    .contact-button button {
+        height: 80px;
+        font-size: 33px;
+        width: 700px;
     }
 }

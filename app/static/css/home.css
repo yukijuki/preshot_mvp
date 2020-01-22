@@ -15,7 +15,7 @@
 
 .card {
     width: 45%;
-    height: 280px;
+    height: 268px;
     overflow: hidden;
     background-color: #FFFFFF;
     border-radius: 15px;
@@ -24,13 +24,12 @@
     -webkit-transition: .1s ease-in-out;
     transition: .1s ease-in-out;
     display: inline-block;
-    margin-bottom: 10px
+    margin-bottom: 15px
 }
 
 .banner {
-    height: 100px;
+    height: 120px;
     width: 100%;
-    padding-top: 30px;
     background-color: #FF8F00;
     background: linear-gradient(-135deg, rgb(238, 240, 109), rgba(240, 152, 37, 0.8), rgba(245, 86, 232, 0.8));
     background-size: cover;
@@ -38,13 +37,13 @@
 }
 
 .avatar {
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
     margin: auto;
     background-size: cover;
     background-position: center;
     background-color: #F1F1F1;
-    border-radius: 100%;
+    object-fit: contain;
 }
 
 .card h3,
@@ -56,6 +55,7 @@ i {
 }
 
 .card h3 {
+    height: 27px;
     margin-top: 15px;
     margin-bottom: 5px;
     font-size: 18px;
@@ -82,15 +82,6 @@ i {
     margin-top: 10px;
     padding: 15px 0px;
     background-color: #FF8F00;
-}
-
-.card ul a {
-    display: inline;
-    margin-right: 10px;
-}
-
-.card ul a:last-of-type {
-    margin-right: 0px;
 }
 
 .card ul a i:hover {
