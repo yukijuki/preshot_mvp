@@ -16,11 +16,17 @@
 <body>
     <header>
         <ul class="tab-nav">
-            <li class="tab right">
+            <li class="tab tab-logo">
+                <img src="{{ url_for('static', filename='preshot_img/preshot_logo02.png') }}" alt="preshot_logo">
+            </li>
+            <li class="tab left">
                 <a href="/home" class="fas fa-address-card"></a>
             </li>
-            <li class="tab left is-active">
+            <li class="tab center is-active">
                 <a href="/profile" class="fas fa-cogs"></a>
+            </li>
+            <li class="tab right is-active">
+                <a href="/logout" class="fas fa-sign-out-alt"></a>
             </li>
         </ul>
 

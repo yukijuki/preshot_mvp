@@ -238,16 +238,11 @@ button:focus {
 
 .mu-logo-area {
     display: inline;
-    float: left;
-    width: 100%;
 }
 
 .mu-logo {
-    color: #fff;
-    font-size: 45px;
     display: inline-block;
-    font-weight: 700;
-    margin-top: 35px;
+    width: 260px;
 }
 
 .mu-logo:hover,
@@ -280,7 +275,7 @@ button:focus {
 .mu-header-featured-area {
     display: inline;
     float: left;
-    padding: 50px 0;
+    padding: 0px 20px 50px 20px;
     width: 100%;
 }
 
@@ -911,6 +906,8 @@ button:focus {
     display: inline;
     float: left;
     width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .mu-contact-area {
@@ -1195,9 +1192,6 @@ button:focus {
         color: #fff;
         font-size: 20px;
         padding: 5px 12px;
-    }
-    .mu-logo {
-        margin-top: 25px;
     }
     .mu-logo img {
         width: 200px;

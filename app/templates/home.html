@@ -1,48 +1,42 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}"> {% endblock %} {% block title %}
+<title>Preshot/Home</title>
+{% endblock %} {% block content %}
 
-{% block css %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-{% endblock %}
-
-{% block title %}
-  <title>Preshot/Home</title>
-{% endblock %}
-
-{% block content %}
 <div class="card-list">
-    
-  <!-- Contact Card ~ #01 -->
-  {% if files %}
-  {% for file in files %}
+
+    <!-- Contact Card ~ #01 -->
+    {% if files %} {% for file in files %}
     <div class="no-card">
     </div>
     <div class="card" id={{file.id}} onclick="getId(this.id);">
-      <div class="banner">
-          <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
-          <img class="avatar" src={{file.filename}}>
-      </div>
-      <h3>{{ file.name }}</h3>
-      <p>業界 -{{ file.industry }}</p>
-      <p>会社 - {{ file.firm }}</p> 
-      <ul>
-        <a href={{file.link}} target="_blank"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
-      </ul>
+        <div class="banner">
+            <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
+            <a href="/employee/{{file.id}}"><img class="avatar" src={{file.filename}} width="168.75" height="120">
+                <a>
+        </div>
+        <h3>{{ file.name }}</h3>
+        <p>業界 -{{ file.industry }}</p>
+        <p>会社 - {{ file.firm }}</p>
+        <ul>
+            <a href={{file.link}} target="_blank"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
+        </ul>
     </div>
     <div class="no-card">
     </div>
- 
-  {% endfor %}
-  {% else %}
-    <h2>No files</h2>
-  {% endif %} 
-  
-</div>
-{% endblock content %}
 
-{% block script %}
+    {% endfor %} {% else %}
+    <h2>No files</h2>
+    {% endif %}
+
+</div>
+
+{% endblock content %} {% block script %}
+<!--ask clicks-->
 <script>
     function getId(id) {
-      
+
         var entry = {
             id: id
         }
@@ -52,7 +46,7 @@
             method: "GET",
             credentials: "include",
             cache: "no-cache"
-        }) 
+        })
     }
 </script>
 {% endblock %}
