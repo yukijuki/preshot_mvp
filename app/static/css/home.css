@@ -1,20 +1,20 @@
 /*- - - - - - C O N T A C T - C A R D S - - - - - */
 
 .card-list {
-    width: 96%;
+    width: 100%;
     margin-top: 50px;
     font-size: 0;
-    padding: 10px 2% 0 2%;
+    padding-top: 10px;
     overflow: scroll;
 }
 
 .no-card {
     display: inline-block;
-    width: 2.5%;
+    width: 4%;
 }
 
 .card {
-    width: 45%;
+    width: 42%;
     height: 268px;
     overflow: hidden;
     background-color: #FFFFFF;
@@ -30,8 +30,7 @@
 .banner {
     height: 120px;
     width: 100%;
-    background-color: #FF8F00;
-    background: linear-gradient(-135deg, rgb(238, 240, 109), rgba(240, 152, 37, 0.8), rgba(245, 86, 232, 0.8));
+    background-color: white;
     background-size: cover;
     background-position: center;
 }
@@ -40,7 +39,6 @@
     margin: auto;
     background-size: cover;
     background-position: center;
-    background-color: #F1F1F1;
     object-fit: cover;
 }
 
@@ -54,8 +52,8 @@ i {
 
 .card h3 {
     height: 27px;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 3px;
+    margin-bottom: 1px;
     font-size: 18px;
     color: #212121;
 }
@@ -71,14 +69,14 @@ i {
 .card p {
     display: block;
     padding: 1px 0px;
-    font-size: 14px;
+    font-size: 11px;
     color: rgb(110, 110, 110);
     text-decoration: none;
 }
 
 .card ul {
-    margin-top: 10px;
-    padding: 15px 0px;
+    margin-top: 5px;
+    padding: 11px 0px;
     background-color: #FF8F00;
 }
 
