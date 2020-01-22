@@ -119,14 +119,13 @@ def profile():
     if email is not None:
         print(email)
     else:
+        flash("ログインしなおしてください。")
         return redirect(url_for('register'))
 
     student = Student.query.filter_by(email=email).first()
 
     if  request.method == "POST":
         data = request.get_json()
-        print("check")
-        print(data)
 
         if data["password"] == "":
             data["password"] = student.password
@@ -222,6 +221,7 @@ def employee(id):
         employee_data["club"] = employee.club
         employee_data["wagamanchi"] = employee.wagamanchi
         employee_data["ask_clicks"] = employee.ask_clicks
+        
     except FileNotFoundError:
         abort(404)
         flash("バグを運営に報告してください")
@@ -309,7 +309,7 @@ def upload():
 
 @app.route('/logout')
 def logout():
-    session.pop('email', None)
+    session.pop('Email', None)
     return redirect(url_for('register'))
 
 @app.route("/delete/<id>", methods=['POST', "GET", "DELETE"])
