@@ -3,16 +3,18 @@ from flask import Flask, request, redirect, session, send_from_directory, jsonif
 from flask_sqlalchemy import SQLAlchemy
 import datetime, os, secrets
 from werkzeug.utils import secure_filename
+from PIL import Image
 
 UPLOAD_FOLDER = '/static/img'
+GET_FOLDER = '/static/img-get'
 PHISICAL_ROOT = os.path.dirname( os.path.abspath( __file__ ) )
 
 # app.config.from_object("config.DevelopmentConfig")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SECRET_KEY"] = "superSecret"
 app.config["UPLOAD_FOLDER"] = PHISICAL_ROOT + UPLOAD_FOLDER
+app.config["GET_FOLDER"] = PHISICAL_ROOT + GET_FOLDER
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG"]
-app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 3000 * 3000
 
 #see the img folder
 #file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
@@ -63,6 +65,16 @@ def allowed_image(filename):
         return True
     else:
         return False
+        
+def crop_center(pil_img, crop_width, crop_height):
+    img_width, img_height = pil_img.size
+    return pil_img.crop(((img_width - crop_width) // 2,
+                         (img_height - crop_height) // 2,
+                         (img_width + crop_width) // 2,
+                         (img_height + crop_height) // 2))
+
+def crop_max_square(pil_img):
+    return crop_center(pil_img, min(pil_img.size), min(pil_img.size))
 
 
 @app.route("/")
@@ -183,7 +195,7 @@ def home():
             employee_data = {}
             employee_data["id"] = employee.id
             employee_data["name"] = employee.name
-            employee_data["filename"] = 'static/img/' + employee.filename
+            employee_data["filename"] = 'static/img-get/' + employee.filename
             employee_data["link"] = employee.link
             employee_data["firm"] = employee.firm
             employee_data["industry"] = employee.industry
@@ -211,7 +223,7 @@ def employee(id):
 
         employee_data["id"] = employee.id
         employee_data["name"] = employee.name
-        employee_data["filename"] = 'static/img/' + employee.filename
+        employee_data["filename"] = 'static/img-get/' + employee.filename
         employee_data["link"] = employee.link
         employee_data["faculty"] = employee.faculty
         employee_data["firm"] = employee.firm
@@ -284,6 +296,11 @@ def upload():
                     return redirect(request.url)
 
                 image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
+
+                img = Image.open(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
+                img = crop_max_square(img)
+                img_resize_lanczos = img.resize((350, 350), Image.LANCZOS)
+                img_resize_lanczos.save(os.path.join(app.config["GET_FOLDER"], image.filename))
 
                 employee = Employee(
                 name = data["name"],
