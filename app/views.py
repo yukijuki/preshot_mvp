@@ -52,9 +52,6 @@ class Ask(db.Model):
     position = db.Column(db.String(80))
     created_at = db.Column(db.DateTime())
 
-db.drop_all()
-db.create_all()
-db.session.commit()
 #----------------------------------------------------------------
 #User login
 def allowed_image(filename):
