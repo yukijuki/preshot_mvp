@@ -65,7 +65,7 @@ ul {
 
 #email,
 .login-password {
-    padding: 0 55px;
+    padding: 0 28px;
     height: 30px;
     text-align: center;
     border-top: none;
@@ -73,6 +73,7 @@ ul {
     border-right: none;
     border-bottom: solid 1px #FF8F00;
     background-color: white;
+    font-size: 16px;
 }
 
 #email,
