@@ -52,6 +52,9 @@ class Ask(db.Model):
     position = db.Column(db.String(80))
     created_at = db.Column(db.DateTime())
 
+db.drop_all()
+db.create_all()
+db.session.commit()
 #----------------------------------------------------------------
 #User login
 def allowed_image(filename):
@@ -299,6 +302,7 @@ def upload():
                 img = crop_max_square(img)
                 img_resize_lanczos = img.resize((350, 350), Image.LANCZOS)
                 img_resize_lanczos.save(os.path.join(app.config["GET_FOLDER"], image.filename))
+                print(filename)
 
                 employee = Employee(
                 name = data["name"],
