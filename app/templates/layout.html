@@ -10,6 +10,13 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/icon" href="{{ url_for('static', filename='preshot_img/preshotlogo.png') }}"> {% block css %}{% endblock %}
     <!-- title-->
+    <link rel="manifest" href="./manifest.json">
+    <script>
+        // service workerが有効なら、service-worker.js を登録します
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js').then(function() { console.log('Service Worker Registered'); });
+    }
+    </script>
     {% block title %}{% endblock %}
 </head>
 
