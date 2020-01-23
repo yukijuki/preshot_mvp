@@ -3,6 +3,7 @@ from flask import Flask, request, redirect, session, send_from_directory, jsonif
 from flask_sqlalchemy import SQLAlchemy
 import datetime, os, secrets
 from werkzeug.utils import secure_filename
+from PIL import Image
 
 UPLOAD_FOLDER = '/static/img'
 PHISICAL_ROOT = os.path.dirname( os.path.abspath( __file__ ) )
@@ -183,7 +184,7 @@ def home():
             employee_data = {}
             employee_data["id"] = employee.id
             employee_data["name"] = employee.name
-            employee_data["filename"] = 'static/img/' + employee.filename
+            employee_data["filename"] = 'static/img-get/' + employee.filename
             employee_data["link"] = employee.link
             employee_data["firm"] = employee.firm
             employee_data["industry"] = employee.industry
@@ -211,7 +212,7 @@ def employee(id):
 
         employee_data["id"] = employee.id
         employee_data["name"] = employee.name
-        employee_data["filename"] = 'static/img/' + employee.filename
+        employee_data["filename"] = 'static/img-get/' + employee.filename
         employee_data["link"] = employee.link
         employee_data["faculty"] = employee.faculty
         employee_data["firm"] = employee.firm
@@ -284,6 +285,9 @@ def upload():
                     return redirect(request.url)
 
                 image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
+                img_resize = img.resize((375, 350))
+                img_resize_lanczos = img.resize((375, 350), Image.LANCZOS)
+
 
                 employee = Employee(
                 name = data["name"],
