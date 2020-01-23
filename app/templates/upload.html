@@ -126,18 +126,6 @@
                     </select>
                 </div>
 
-                <div class="status btn-select">後輩におねだりをしよう
-                    <p class="label wagamanchi-label">-</p>
-                    <select class="select wagamanchi-select" id="wagamanchi" name="wagamanchi" size="1" required>
-                            
-                            <option value="ドリンク（150円未満）">ドリンク（150円未満）</option>
-                            <option value="コーヒー（200円未満）">コーヒー（200円未満）</option>
-                            <option value="サブウェイ（550円未満）">サブウェイ（550円未満）</option>
-                            <option value="フリーハグ">フリーハグ</option>
-                            <option value="なし">なし</option>
-                    </select>
-                </div>
-
                 <div class="status img-select">
                     <p>プロフィール写真を選択してください</p>
                     <div class="image-upload">選択
@@ -204,13 +192,7 @@
             // onchange後にフォーカスしてるのが嫌な場合
             $this.blur();
         });
-        $('.wagamanchi-select').on('change', function() {
-            var $this = $(this)
-            var $option = $this.find('option:selected');
-            $('.wagamanchi-label').text($option.text());
-            // onchange後にフォーカスしてるのが嫌な場合
-            $this.blur();
-        });
+        
     });
 </script>
 <script>
@@ -225,7 +207,6 @@
         var position = document.getElementById("position");
         var lab = document.getElementById("lab");
         var club = document.getElementById("club");
-        var wagamanchi = document.getElementById("wagamanchi");
 
         var entry = {
             image: image.value,
@@ -237,7 +218,6 @@
             position: position.value,
             lab: lab.value,
             club: club.value,
-            wagamanchi: wagamanchi.value
         }
         console.log(entry)
 

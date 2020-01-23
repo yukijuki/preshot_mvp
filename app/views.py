@@ -42,7 +42,6 @@ class Employee(db.Model):
     position = db.Column(db.String(80), nullable=False)
     lab = db.Column(db.String(80), nullable=False)
     club = db.Column(db.String(80), nullable=False)
-    wagamanchi = db.Column(db.String(255), nullable=False)
     ask_clicks = db.Column(db.Integer)
 
 class Ask(db.Model):
@@ -65,7 +64,7 @@ def allowed_image(filename):
         return True
     else:
         return False
-        
+
 def crop_center(pil_img, crop_width, crop_height):
     img_width, img_height = pil_img.size
     return pil_img.crop(((img_width - crop_width) // 2,
@@ -231,7 +230,6 @@ def employee(id):
         employee_data["position"] = employee.position
         employee_data["lab"] = employee.lab
         employee_data["club"] = employee.club
-        employee_data["wagamanchi"] = employee.wagamanchi
         employee_data["ask_clicks"] = employee.ask_clicks
         
     except FileNotFoundError:
@@ -312,7 +310,6 @@ def upload():
                 position = data["position"],
                 lab = data["lab"],
                 club = data["club"],
-                wagamanchi = data["wagamanchi"],
                 ask_clicks = 0
                 )
 
