@@ -6,14 +6,15 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 
 UPLOAD_FOLDER = '/static/img'
+GET_FOLDER = '/static/img-get'
 PHISICAL_ROOT = os.path.dirname( os.path.abspath( __file__ ) )
 
 # app.config.from_object("config.DevelopmentConfig")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 app.config["SECRET_KEY"] = "superSecret"
 app.config["UPLOAD_FOLDER"] = PHISICAL_ROOT + UPLOAD_FOLDER
+app.config["GET_FOLDER"] = PHISICAL_ROOT + GET_FOLDER
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG"]
-app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 3000 * 3000
 
 #see the img folder
 #file_list = os.listdir( app.config['UPLOAD_FOLDER'] )
@@ -64,6 +65,16 @@ def allowed_image(filename):
         return True
     else:
         return False
+        
+def crop_center(pil_img, crop_width, crop_height):
+    img_width, img_height = pil_img.size
+    return pil_img.crop(((img_width - crop_width) // 2,
+                         (img_height - crop_height) // 2,
+                         (img_width + crop_width) // 2,
+                         (img_height + crop_height) // 2))
+
+def crop_max_square(pil_img):
+    return crop_center(pil_img, min(pil_img.size), min(pil_img.size))
 
 
 @app.route("/")
@@ -285,9 +296,11 @@ def upload():
                     return redirect(request.url)
 
                 image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
-                img_resize = img.resize((375, 350))
-                img_resize_lanczos = img.resize((375, 350), Image.LANCZOS)
 
+                img = Image.open(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
+                img = crop_max_square(img)
+                img_resize_lanczos = img.resize((350, 350), Image.LANCZOS)
+                img_resize_lanczos.save(os.path.join(app.config["GET_FOLDER"], image.filename))
 
                 employee = Employee(
                 name = data["name"],
