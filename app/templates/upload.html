@@ -8,11 +8,11 @@
             <div class="upload-container">
 
                 <p class="status">名前
-                    <br> <input placeholder="your name" name="name" id="name" type="text" required>
+                    <br> <input placeholder="-" name="name" id="name" type="text" required>
                 </p>
 
                 <p class="status">SNSのリンク先
-                    <br><input placeholder="Enter your link" type="text" id="link" name="link" required>
+                    <br><input placeholder="-" type="text" id="link" name="link" required>
                 </p>
 
                 <div class="status btn-select">学部を選択してください
@@ -27,22 +27,31 @@
                 </div>
 
                 <p class="status">内定先を記入してください
-                    <br><input placeholder="Enter your firm" type="firm" id="firm" name="firm" required>
+                    <br><input placeholder="-" type="firm" id="firm" name="firm" required>
                 </p>
 
                 <div class="status btn-select">業界を選択してください
                     <p class="label industry-label">-</p>
                     <select class="select industry-select" id="industry" name="industry" size="1" required>
-                            <option value="コンサル">コンサル</option>
                             <option value="商社">商社</option>
                             <option value="メーカー">メーカー</option>
                             <option value="小売">小売</option>
                             <option value="金融">金融</option>
-                            <option value="サービス">サービス</option>
+                            <option value="コンサル・シンクタンク">コンサル・シンクタンク</option>
                             <option value="マスコミ">マスコミ</option>
-                            <option value="IT・通信">IT・通信</option>
+                            <option value="IT・通信">Web・IT・通信</option>
+                            <option value="出版・広告・メディア">出版・広告・メディア</option>
+                            <option value="建設・不動産">建設・不動産</option>
+                            <option value="インフラ">インフラ</option>
+                            <option value="物流・運送">物流・運送</option>
+                            <option value="衣料・装飾">衣料・装飾</option>
+                            <option value="エネルギー・資源">エネルギー・資源</option>
+                            <option value="飲食">食品・飲食</option>
+                            <option value="金融">エンタメ・ゲーム</option>
+                            <option value="娯楽・旅行・レジャー">娯楽・旅行・レジャー</option>
                             <option value="官公庁・公社・団体">官公庁・公社・団体</option>
-                            <option value="医療">医療</option>
+                            <option value="介護・医療">介護・医療</option>
+                            <option value="教育・人材派遣">教育・人材派遣</option>
                             <option value="その他">その他</option>
                     </select>
                 </div>
@@ -53,7 +62,7 @@
                             <option value="総合職・一般職">総合職・一般職</option>
                             <option value="事務・管理">事務・管理</option>
                             <option value="企画職">企画職</option>
-                            <option value="開発">開発</option>
+                            <option value="開発">開発職</option>
                             <option value="技術職">技術職</option>
                             <option value="営業職">営業職</option>
                             <option value="マーケティング・広報">マーケティング・広報</option>
@@ -70,7 +79,6 @@
                 <div class="status btn-select">研究会の領域を選択してください
                     <p class="label lab-label">-</p>
                     <select class="select lab-select" id="lab" name="lab" size="1" required>
-                          
                             <option value="法学">法学</option>
                             <option value="政治/経済">政治/経済</option>
                             <option value="経営/商">経営/商</option>
@@ -126,17 +134,7 @@
                     </select>
                 </div>
 
-                <div class="status btn-select">後輩におねだりをしよう
-                    <p class="label wagamanchi-label">-</p>
-                    <select class="select wagamanchi-select" id="wagamanchi" name="wagamanchi" size="1" required>
-                            
-                            <option value="ドリンク（150円未満）">ドリンク（150円未満）</option>
-                            <option value="コーヒー（200円未満）">コーヒー（200円未満）</option>
-                            <option value="サブウェイ（550円未満）">サブウェイ（550円未満）</option>
-                            <option value="フリーハグ">フリーハグ</option>
-                            <option value="なし">なし</option>
-                    </select>
-                </div>
+
 
                 <div class="status img-select">
                     <p>プロフィール写真を選択してください</p>
