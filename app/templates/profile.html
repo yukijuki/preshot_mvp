@@ -8,21 +8,21 @@
         <div class="profile-area">
             <div class="profile-container">
 
-                <p class="status mail-address">現在のメールアドレス
+                <p class="status mail-address">E-Mail
                     <br> {{ data["email"] }}
                     <!-- <br> <input placeholder="your_email@address.com" id="email" type="email">
                         needs to be get rid of-->
                 </p>
 
-                <p class="status">現在のパスワード - {{ data["password"] }}
-                    <br><input placeholder="4桁の数字" type="text" id="password">
+                <p class="status">password - {{ data["password"] }}
+                    <br><input placeholder="新しいパスワード" type="text" id="password">
                 </p>
 
-                <p class="status">現在の名前 - {{ data["name"] }}
-                    <br><input placeholder="Your Name" type="text" id="name">
+                <p class="status">名前 - {{ data["name"] }}
+                    <br><input placeholder="新しい名前" type="text" id="name">
                 </p>
 
-                <div class="status btn-select">現在の業界 - {{ data["industry"] }}
+                <div class="status btn-select">業界 - {{ data["industry"] }}
                     <p class="label">業界を選択してください</p>
                     <select class="select" id="industry" name="業界" size="1">
                                 <option value="業界を選択してください" selected>業界を選択してください</option>
@@ -37,7 +37,7 @@
                                 <option value="その他">その他</option>
                         </select>
                 </div>
-                <button class="btn save" 　type="submit" onclick="submit_entry();">Save</button>
+                <button class="btn save" 　type="submit" onclick="submit_entry();">変更</button>
                 <div class="message">
                     <p>お問い合わせ/アカウントの削除などはこちら
                         <a href="mailto:preshot.info@gmail.com">preshot.info@gmail.com</a>

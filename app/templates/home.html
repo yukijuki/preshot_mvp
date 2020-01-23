@@ -14,13 +14,13 @@
         <div class="banner">
             <!---onlcick to get the link of this emplyee and send it to the API using the Id(link)-->
             <img class="avatar" src={{file.filename}} width="168.75" height="120">
-                <a>
+            <a>
         </div>
         <h3>{{ file.name }}</h3>
         <p>業界 <br>-{{ file.industry }}</p>
         <p>会社 <br>- {{ file.firm }}</p>
         <ul>
-            <a href="/employee/{{file.id}}" target="_blank" onclick="getId(this.id);"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
+            <a href="/employee/{{file.id}}" onclick="getId(this.id);"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
         </ul>
     </div>
     <div class="no-card">
