@@ -2,12 +2,15 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}"> {% endblock %} {% block title %}
 <title>Preshot/Home</title>
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block content %}
 
 <div class="card-list">
 
     <!-- Contact Card ~ #01 -->
-    {% if files %} {% for file in files %}
+    {% if files %} 
+    {% for file in files %}
     <div class="no-card">
     </div>
     <div class="card" id={{file.id}}>
@@ -20,7 +23,7 @@
         <p>業界 <br>{{ file.industry }}</p>
         <p>会社 <br>{{ file.firm }}</p>
         <ul>
-            <a href="/employee/{{file.id}}" onclick="getId(this.id);"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
+            <a href="/employee/{{file.id}}"><i class="fas fa-comments" style="font-size:18px; color:white;"></i>       もっと見る</a>
         </ul>
     </div>
     <div class="no-card">
@@ -32,21 +35,4 @@
 
 </div>
 
-{% endblock content %} {% block script %}
-<!--ask clicks-->
-<script>
-    function getId(id) {
-
-        var entry = {
-            id: id
-        }
-        console.log(entry)
-
-        fetch(`${window.origin}/employee/${id}`, {
-            method: "GET",
-            credentials: "include",
-            cache: "no-cache"
-        })
-    }
-</script>
-{% endblock %}
+{% endblock content %} 

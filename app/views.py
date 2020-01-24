@@ -48,10 +48,10 @@ class Ask(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     student_email = db.Column(db.String(80))
     employee_name = db.Column(db.String(80))
-    industry = db.Column(db.String(80))
-    position = db.Column(db.String(80))
     created_at = db.Column(db.DateTime())
 
+# db.drop_all()
+# db.create_all()
 #----------------------------------------------------------------
 #User login
 def allowed_image(filename):
@@ -198,7 +198,6 @@ def home():
             employee_data["link"] = employee.link
             employee_data["firm"] = employee.firm
             employee_data["industry"] = employee.industry
-            employee_data["ask_clicks"] = employee.ask_clicks
             response.append(employee_data)
         print(response)
 
@@ -239,34 +238,23 @@ def employee(id):
     return render_template('employee.html', file=employee_data)
 
 
-@app.route("/ask_click", methods=["GET","POST"])
-def ask_click():
-    data = request.get_json()
-    """
-    data = {
-        "email":"Str",
-        "employee_name":"Str"
-        "industry":"Str",
-        "firm":"Str"
-        "position":"Str",
-        "lab":"Str"
-        "club":"Str",
-    }
-    """
-    employee = Employee.query.filter_by(name=data["employee_name"]).first()
-    if employee.ask_clicks is None:
-        employee.ask_clicks == 1
-    else:
-        employee.ask_clicks += 1
-    asklog = Ask(
-        email=data["email"], 
-        employee_name=data["employee_name"], 
-        industry=data["industry"], 
-        position=data["position"], 
-        created_at=datetime.datetime.now())
+# @app.route("/ask_click", methods=["GET","POST"])
+# def ask_click():
+#     data = request.get_json()
+#     email = session.get('Email')
+#     print(data["id"])
 
-    db.session.add(asklog)
-    db.session.commit()
+#     employee = Employee.query.filter_by(name=data["id"]).first()
+#     employee.ask_clicks += 1
+#     asklog = Ask(
+#         student_email=email, 
+#         employee_name=data["id"],
+#         created_at=datetime.datetime.now())
+
+#     db.session.add(asklog)
+#     db.session.commit()
+
+#     return render_template("home.html")
 
 
 @app.route("/upload", methods=["GET", "POST"])
