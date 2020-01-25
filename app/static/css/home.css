@@ -8,14 +8,13 @@
 }
 
 .card {
-    width: 95%;
+    width: 100%;
     background-color: #FFFFFF;
     -webkit-transition: .1s ease-in-out;
     transition: .1s ease-in-out;
     position: relative;
     z-index: 1;
-    border-radius: 10px;
-    margin: 10px;
+    border-bottom: solid 0.1px gray;
 }
 
 .card a {
@@ -43,23 +42,25 @@
     background-position: center;
     object-fit: cover;
     border-radius: 100px;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    border: solid 3px #FF8F00;
 }
 
 .profile-text {
     display: inline-block;
     width: 65%;
-    height: 120px;
+    height: 100px;
 }
 
 .text-box {
-    padding: 20px;
-    height: 80px;
+    padding: 15px 0px 15px 5px;
+    height: 70px;
 }
 
 .text-box h3 {
-    font-size: 16px;
+    font-size: 1.7vh;
+    margin-right: 35px;
     padding: 2px 0 2px 3px;
     border-bottom: solid 1px #FF8F00;
 }
