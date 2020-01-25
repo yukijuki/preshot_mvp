@@ -163,12 +163,6 @@ def profile():
 
 @app.route("/home", methods=["GET"])
 def home():
-    email = session.get('Email')
-    if email is not None:
-        print(email)
-    else:
-        flash("ログインしなおしてください。")
-        return redirect(url_for('register'))
     
     try:        
         """
@@ -208,12 +202,6 @@ def home():
 
 @app.route("/employee/<id>", methods=["GET"])
 def employee(id):
-    email = session.get('Email')
-    if email is not None:
-        print(email)
-    else:
-        flash("ログインしなおしてください。")
-        return redirect(url_for('register'))
     
     employee_data = {}
     try:        
