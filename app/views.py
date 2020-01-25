@@ -126,12 +126,12 @@ def register():
 
 @app.route("/profile", methods=["Get", "POST"])
 def profile():
-    email = session.get('Email')
-    if email is not None:
-        print(email)
-    else:
-        flash("ログインしなおしてください。")
-        return redirect(url_for('register'))
+    # email = session.get('Email')
+    # if email is not None:
+    #     print(email)
+    # else:
+    #     flash("ログインしなおしてください。")
+    #     return redirect(url_for('register'))
 
     student = Student.query.filter_by(email=email).first()
 
