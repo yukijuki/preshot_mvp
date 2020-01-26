@@ -43,6 +43,19 @@ body {
     color: #1c1b1b;
 }
 
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url("../../preshot_img/background-image.png") center no-repeat;
+    filter: brightness(50%);
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -241,7 +254,8 @@ button:focus {
 
 .mu-logo {
     display: inline-block;
-    width: 160px;
+    width: 120px;
+    padding: 20px;
 }
 
 .mu-logo:hover,
@@ -301,10 +315,15 @@ button:focus {
 
 .mu-header-featured-content h1 span {
     font-weight: 700;
+    color: #FF8F00;
 }
 
 .mu-header-featured-content p {
     color: #fff;
+}
+
+.mu-header-featured-content p span {
+    color: #ff8f00;
 }
 
 .mu-app-download-area {
@@ -324,7 +343,6 @@ button:focus {
 .mu-apple-btn,
 .mu-google-btn,
 .mu-windows-btn {
-    border: 2px solid #fff;
     border-radius: 50px;
     color: #fff;
     display: inline-block;
@@ -334,6 +352,7 @@ button:focus {
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+    background-color: #FF8F00;
 }
 
 .mu-apple-btn:hover,

@@ -42,16 +42,6 @@ Author URI : http://www.markups.io/
     background-color: #ff871c;
 }
 
-.mu-header-overlay,
-.mu-menu-btn,
-.mu-title-dot,
-.mu-title-dot::before,
-.mu-title-dot::after,
-.mu-feature-btn,
-.mu-video-overlay {
-    background-color: #FF8F00;
-}
-
 .mu-feature-content-right .media:hover {
     border-bottom: 1px solid #ff871c;
 }
