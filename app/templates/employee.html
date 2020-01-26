@@ -15,11 +15,11 @@
         </div>
         <div class="employee-status">
             <div class="employee-status-container">
-                <p class="texter">内定先 / {{ file.firm }}</p>
-                <p class="texter">業界 / {{ file.industry }}</p>
-                <p class="texter">職種 / {{ file.position }}</p>
-                <p class="texter">研究会領域 / {{ file.lab }}</p>
-                <p class="texter">サークル・体育会 / {{ file.club }}</p>
+                <p class="texter">内定先： {{ file.firm }}</p>
+                <p class="texter">業界： {{ file.industry }}</p>
+                <p class="texter">職種： {{ file.position }}</p>
+                <p class="texter">研究会領域： {{ file.lab }}</p>
+                <p class="texter">サークル・体育会： {{ file.club }}</p>
             </div>
         </div>
         <div class="contact-button">
@@ -32,8 +32,4 @@
 </div>
 {% else %}
 <h2>No files</h2>
-{% endif %} 
-{% endblock content %}
-
-{% block script %}
-{% endblock %}
+{% endif %} {% endblock content %} {% block script %} {% endblock %}

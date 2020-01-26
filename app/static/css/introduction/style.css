@@ -43,6 +43,19 @@ body {
     color: #1c1b1b;
 }
 
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    background: url("../../preshot_img/background-image.png") center no-repeat;
+    filter: brightness(50%);
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -221,7 +234,6 @@ button:focus {
 /*--------------------*/
 
 #mu-header {
-    background-image: url("assets/images/header-bg.jpg");
     display: inline;
     float: left;
     width: 100%;
@@ -238,12 +250,12 @@ button:focus {
 
 .mu-logo-area {
     display: inline;
-    
 }
 
 .mu-logo {
     display: inline-block;
-    width: 160px;
+    width: 120px;
+    padding: 20px;
 }
 
 .mu-logo:hover,
@@ -303,10 +315,15 @@ button:focus {
 
 .mu-header-featured-content h1 span {
     font-weight: 700;
+    color: #FF8F00;
 }
 
 .mu-header-featured-content p {
     color: #fff;
+}
+
+.mu-header-featured-content p span {
+    color: #ff8f00;
 }
 
 .mu-app-download-area {
@@ -326,7 +343,6 @@ button:focus {
 .mu-apple-btn,
 .mu-google-btn,
 .mu-windows-btn {
-    border: 2px solid #fff;
     border-radius: 50px;
     color: #fff;
     display: inline-block;
@@ -336,6 +352,7 @@ button:focus {
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+    background-color: #FF8F00;
 }
 
 .mu-apple-btn:hover,
@@ -914,7 +931,7 @@ button:focus {
 .mu-contact-area {
     display: inline;
     float: left;
-    padding: 100px 0;
+    padding-top: 70px;
     width: 100%;
 }
 
@@ -929,7 +946,7 @@ button:focus {
 .mu-contact-content {
     display: inline;
     float: left;
-    margin-top: 50px;
+    margin: 50px auto 50px auto;
     padding: 0 120px;
     width: 100%;
 }
@@ -948,7 +965,7 @@ button:focus {
 
 .mu-contact-right-single .mu-icon {
     font-size: 20px;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 .mu-contact-right-single p {
@@ -1064,6 +1081,43 @@ button:focus {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+}
+
+.mu-app-download-area-2 {
+    display: inline;
+    float: left;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.mu-app-download-area-2 h4 {
+    color: black;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.mu-apple-btn-2,
+.mu-google-btn-2 {
+    border-radius: 50px;
+    color: white;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 11px 60px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    background-color: #FF8F00;
+}
+
+.mu-apple-btn-2 i,
+.mu-google-btn-2 i {
+    display: block;
+    float: left;
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 10px;
 }
 
 
@@ -1249,5 +1303,15 @@ button:focus {
 @media (max-width: 320px) {
     .mu-video-iframe-area {
         padding: 30% 5%;
+    }
+}
+
+@media (max-width: 767px) {
+    .mu-app-download-area-2 {
+        margin-top: 20px;
+    }
+    .mu-apple-btn-2,
+    .mu-google-btn-2 {
+        margin-bottom: 10px;
     }
 }
