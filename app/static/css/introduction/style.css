@@ -69,7 +69,7 @@ ul li {
 
 a {
     text-decoration: none;
-    color: #2f2f2f;
+    color: white;
 }
 
 a:hover,
@@ -288,7 +288,7 @@ button:focus {
 .mu-header-featured-area {
     display: inline;
     float: left;
-    padding: 0px 20px 50px 20px;
+    padding: 0px 20px 80px 20px;
     width: 100%;
 }
 
@@ -309,21 +309,25 @@ button:focus {
 .mu-header-featured-content h1 {
     font-size: 45px;
     color: #fff;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 15px;
 }
 
 .mu-header-featured-content h1 span {
     font-weight: 700;
     color: #FF8F00;
+    filter: brightness(1.1);
 }
 
 .mu-header-featured-content p {
     color: #fff;
+    font-size: 2vh;
 }
 
 .mu-header-featured-content p span {
     color: #ff8f00;
+    font-weight: 700;
+    filter: brightness(1.1);
 }
 
 .mu-app-download-area {
@@ -336,7 +340,7 @@ button:focus {
 .mu-app-download-area h4 {
     color: #fff;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 20px;
 }
 
@@ -371,7 +375,7 @@ button:focus {
     float: left;
     font-size: 20px;
     line-height: 24px;
-    margin-right: 10px;
+    margin: 10px 0 0 10px;
 }
 
 .mu-apple-btn span,
@@ -546,6 +550,7 @@ button:focus {
     display: inline-block;
     margin-bottom: 20px;
     position: relative;
+    background-color: #FF8F00;
 }
 
 .mu-title-dot::before {
@@ -555,6 +560,7 @@ button:focus {
     height: 3px;
     width: 50px;
     top: 2px;
+    background-color: #FF8F00;
 }
 
 .mu-title-dot::after {
@@ -564,6 +570,7 @@ button:focus {
     height: 3px;
     width: 50px;
     top: 2px;
+    background-color: #FF8F00;
 }
 
 .mu-feature-content {
@@ -971,6 +978,7 @@ button:focus {
 .mu-contact-right-single p {
     margin-bottom: 0;
     display: inline-block;
+    color: white;
 }
 
 .mu-contact-left {
@@ -1039,7 +1047,7 @@ button:focus {
 }
 
 .mu-social-media a {
-    border: 1px solid #19191a;
+    border: 0.5px solid #19191a;
     border-radius: 50px;
     color: #19191a;
     display: inline-block;
@@ -1052,6 +1060,7 @@ button:focus {
     height: 35px;
     line-height: 35px;
     font-size: 18px;
+    background-color: white;
 }
 
 #form-messages {
@@ -1193,7 +1202,7 @@ button:focus {
         padding: 12px 22px;
     }
     .mu-header-featured-content {
-        margin-top: 35px;
+        margin-top: 50px;
     }
     .mu-video-iframe-area {
         padding: 16% 5%;
@@ -1235,7 +1244,7 @@ button:focus {
         font-size: 35px;
     }
     .mu-app-download-area {
-        margin-top: 20px;
+        margin-top: 40px;
     }
     .mu-apple-btn,
     .mu-google-btn,
