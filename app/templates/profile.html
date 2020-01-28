@@ -7,39 +7,44 @@
         <!-- profile画面 -->
         <div class="profile-area">
             <div class="profile-container">
-
-                <p class="status mail-address">E-Mail
-                    <br> {{ data["email"] }}
-                    <!-- <br> <input placeholder="your_email@address.com" id="email" type="email">
-                        needs to be get rid of-->
-                </p>
-
-                <p class="status">password - {{ data["password"] }}
-                    <br><input placeholder="新しいパスワード" type="text" id="password">
-                </p>
-
-                <p class="status">名前 - {{ data["name"] }}
-                    <br><input placeholder="名前を変更" type="text" id="name">
-                </p>
-
-                <div class="status btn-select">業界 - {{ data["industry"] }}
-                    <p class="label" style="color: gray;">業界を変更</p>
-                    <select class="select" id="industry" name="業界" size="1">
-                                <option value="選択してください" selected>選択してください</option>
-                                <option value="商社">商社</option>
-                                <option value="メーカー">メーカー</option>
-                                <option value="小売">小売</option>
-                                <option value="金融">金融</option>
-                                <option value="サービス">サービス</option>
-                                <option value="マスコミ">マスコミ</option>
-                                <option value="IT・通信">IT・通信</option>
-                                <option value="官公庁・公社・団体">官公庁・公社・団体</option>
-                                <option value="その他">その他</option>
-                        </select>
+                <div class="status">
+                    <p id="your-profile">設定</p>
                 </div>
-                <button class="btn save" 　type="submit" onclick="submit_entry();">変更</button>
+                <div class="status mail-address">
+                    <p class="status-text">- メールアドレス
+                        <br><span> {{ data["email"] }}</span></p>
+                </div>
+                <div class="status">
+                    <p class="status-text">- 現在のパスワード - {{ data["password"] }}
+                        <br><span><input placeholder="新しいパスワード" type="text" id="password"></span></p>
+                </div>
+
+                <div class="status">
+                    <p class="status-text">- あなたの名前 - {{ data["name"] }}
+                        <br><span><input placeholder="名前を変更" type="text" id="name"></span></p>
+                </div>
+
+                <div class="status btn-select">
+                    <div class="status-text">- 志望先業界 - {{ data["industry"] }}
+                        <br>
+                        <p class="label" style="color: gray;">業界を変更</p>
+                        <select class="select" id="industry" name="業界" size="1">
+                            <option value="選択してください" selected>選択してください</option>
+                            <option value="商社">商社</option>
+                            <option value="メーカー">メーカー</option>
+                            <option value="小売">小売</option>
+                            <option value="金融">金融</option>
+                            <option value="サービス">サービス</option>
+                            <option value="マスコミ">マスコミ</option>
+                            <option value="IT・通信">IT・通信</option>
+                            <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-change"><button class="btn save" 　type="submit" onclick="submit_entry();">変更</button></div>
                 <div class="message">
-                    <p>お問い合わせ/アカウントの削除などはこちら
+                    <p>お問い合わせ/アカウント削除
                         <a href="mailto:preshot.info@gmail.com">preshot.info@gmail.com</a>
                     </p>
                 </div>

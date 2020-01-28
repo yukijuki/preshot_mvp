@@ -348,10 +348,10 @@ button:focus {
 .mu-google-btn,
 .mu-windows-btn {
     border-radius: 50px;
-    color: #fff;
+    color: white;
     display: inline-block;
     margin: 0 10px;
-    padding: 11px 22px;
+    padding: 1.5vh 7vh;
     text-transform: uppercase;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -375,7 +375,7 @@ button:focus {
     float: left;
     font-size: 20px;
     line-height: 24px;
-    margin: 10px 0 0 10px;
+    margin-right: 10px;
 }
 
 .mu-apple-btn span,
@@ -1112,7 +1112,7 @@ button:focus {
     color: white;
     display: inline-block;
     margin: 0 10px;
-    padding: 11px 60px;
+    padding: 1.5vh 7vh;
     text-transform: uppercase;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -1202,7 +1202,7 @@ button:focus {
         padding: 12px 22px;
     }
     .mu-header-featured-content {
-        margin-top: 50px;
+        margin-top: 60px;
     }
     .mu-video-iframe-area {
         padding: 16% 5%;
@@ -1244,7 +1244,7 @@ button:focus {
         font-size: 35px;
     }
     .mu-app-download-area {
-        margin-top: 40px;
+        margin-bottom: 10px;
     }
     .mu-apple-btn,
     .mu-google-btn,
